@@ -1,0 +1,18 @@
+{
+  "name": "techtalent",
+  "version": "1.0.0",
+  "description": "Tech Talent",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "DTC",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.14.2",
+    "express": "^4.13.3",
+    "mongoose": "^4.3.5",
+    "morgan": "^1.6.1"
+  }
+}
