@@ -46,5 +46,9 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
+
 node_modules/
 .idea
+
+public/assets/bower_components/
+public/assets/node_modules/
