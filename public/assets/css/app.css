@@ -9263,16 +9263,24 @@ blockquote p {
       .navbar-custom .nav li.active a:hover, .navbar-custom .nav li.active a:focus {
         background: #FF8500;
         color: #fff; }
+  @media (max-width: 767px) {
+    .navbar-right {
+      float: right;
+      margin-top: -45px; } }
 
 .form-login {
   max-width: 450px;
   margin: auto;
   margin-top: 250px;
   font-size: 16px; }
+  @media (max-width: 767px) {
+    .form-login {
+      margin-top: 35vh; } }
 
 .linkedin-login {
   text-align: center;
-  margin-top: 170px; }
+  margin-top: 170px;
+  padding-bottom: 20px; }
   .linkedin-login img {
     height: 40px;
     margin-bottom: 10px; }
