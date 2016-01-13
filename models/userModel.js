@@ -3,11 +3,11 @@ var mongoose = require('mongoose'),
     bcrypt = require('bcrypt-nodejs'),
 
     UserSchema = new Schema({
-    username    : {type : String, required:true, index: {unique : true}},
-    email       : {type : String, required:true},
-    password    : {type : String, required:true, select: false},
-    token       : {type : String, required:true, select: false},
-    activated   : [Boolean]
+        username    : {type : String, required:true, index: {unique : true}},
+        email       : {type : String, required:true},
+        password    : {type : String, required:true, select: false},
+        token       : {type : String, required:true, select: false},
+        activated   : [Boolean]
     });
 
 UserSchema.pre('save', function(next){

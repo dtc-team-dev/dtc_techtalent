@@ -2,7 +2,7 @@ var express = require('express'),
     bodyParser = require('body-parser'),
     morgan = require('morgan'),
     mongoose = require('mongoose'),
-    config = require('./config/main'),
+    config = require('./config/example'),
     app = express();
 
 app.use(bodyParser.urlencoded({ extended : true }));
