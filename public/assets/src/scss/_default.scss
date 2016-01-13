@@ -72,3 +72,34 @@ blockquote {
 	-webkit-transform: rotate($deg);
 	transform: rotate($deg);
 }
+
+
+.form-custom {
+	.input-button {
+		position: relative;
+		input {
+			width: 100%;
+			padding: 10px 15px;
+			border: none;
+			box-shadow: 0px 5px 25px #ccc;
+			border-radius: 5px;
+			outline: none;
+			&:focus {
+				box-shadow: 0px 5px 25px #ccc;
+			}
+		}
+		button {
+			background: $orange;
+			color: #fff;
+			font-weight: bold;
+			padding: 6px 11px;
+			border: none;
+			border-radius: 3px;
+			position: absolute;
+			z-index: 1;
+			top: 3.5px;
+			right: 4px;
+			outline: none;
+		}
+	}
+}

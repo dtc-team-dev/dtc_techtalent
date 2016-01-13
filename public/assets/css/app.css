@@ -9197,6 +9197,35 @@ blockquote p {
     .mobile {
       display: inline-block; } }
 
+.form-custom .input-button {
+  position: relative; }
+  .form-custom .input-button input {
+    width: 100%;
+    padding: 10px 15px;
+    border: none;
+    box-shadow: 0px 5px 25px #ccc;
+    border-radius: 5px;
+    outline: none; }
+    .form-custom .input-button input:focus {
+      box-shadow: 0px 5px 25px #ccc; }
+  .form-custom .input-button button {
+    background: #FF8500;
+    color: #fff;
+    font-weight: bold;
+    padding: 6px 11px;
+    border: none;
+    border-radius: 3px;
+    position: absolute;
+    z-index: 1;
+    top: 3.5px;
+    right: 4px;
+    outline: none; }
+
+.bg {
+  width: 100%;
+  min-height: 100vh;
+  background: url(/public/assets/img/bg-asia_techtalent.png) no-repeat center; }
+
 .navbar {
   border: none;
   border-radius: 0;
@@ -9205,7 +9234,7 @@ blockquote p {
     font-weight: bold;
     color: #FF8500 !important; }
   .navbar-custom {
-    background: #fff;
+    background: transparent;
     padding-top: 20px; }
     .navbar-custom .nav li a {
       font-weight: bold;
@@ -9222,53 +9251,7 @@ blockquote p {
         background: #FF8500;
         color: #fff; }
 
-#carousel-home .img {
-  width: 100%;
-  height: 400px;
-  background: #eee;
-  background-size: cover !important;
-  background-position: center !important; }
-
-#carousel-home .carousel-caption {
-  font-size: 30px;
-  font-weight: bold;
-  bottom: 0;
-  top: 0;
+.form-login {
+  max-width: 450px;
   margin: auto;
-  height: 1px; }
-
-#carousel-home .carousel-indicators li {
-  margin: 5px; }
-
-.thumbnail-custom {
-  padding: 0;
-  border: none;
-  margin-bottom: 0 !important; }
-  .thumbnail-custom .img {
-    width: 100%;
-    height: 250px;
-    background: #eee;
-    background-size: cover !important;
-    background-position: center !important; }
-    .thumbnail-custom .img:hover .title-box {
-      width: 100%; }
-    .thumbnail-custom .img .title {
-      color: #000;
-      background: #fff;
-      display: inline-block;
-      padding: 5px 10px;
-      margin: 10px;
-      font-size: 18px;
-      bottom: 0;
-      left: 0;
-      position: absolute;
-      overflow: hidden;
-      height: 35px; }
-      .thumbnail-custom .img .title-box {
-        -webkit-transition: all 0.5s;
-        -o-transition: all 0.5s;
-        transition: all 0.5s;
-        width: 0;
-        height: 100%;
-        overflow: hidden;
-        position: relative; }
+  margin-top: 250px; }
