@@ -9155,7 +9155,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   src: url("../fonts/HelveticaNeueLTStd-Bd.woff"); }
 
 html, body {
-  font-family: "Arial";
+  font-family: "Helvetica-Roman";
   margin: 0;
   padding: 0;
   font-size: 14px;
@@ -9219,7 +9219,6 @@ blockquote p {
   .form-custom .input-button button {
     background: #FF8500;
     color: #fff;
-    font-weight: bold;
     padding: 6px 16px;
     border: none;
     border-radius: 3px;
