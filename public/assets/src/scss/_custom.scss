@@ -4,26 +4,27 @@
 	margin: 0;
 	&-brand {
 		font-weight: bold;
-		color: $darkblue-font !important;
+		color: $orange !important;
 	}
 	&-custom {
-		background: $darkblue;
+		background: #fff;
+		padding-top: 20px;
 		.nav {
 			li {
 				a {
 					font-weight: bold;
-					color: $darkblue-font;
+					color: #999;
 					@include transition(.3s);
 					&:hover, &:focus {
-						color: $darkblue-font;
+						color: #666;
 					}
 				}
 				&.active {
 					a {
-						background: $darkblue;
+						background: $orange;
 						color: #fff;
 						&:hover, &:focus {
-							background: $darkblue;
+							background: $orange;
 							color: #fff;
 						}
 					}

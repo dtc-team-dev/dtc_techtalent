@@ -7,8 +7,7 @@ app.config(function ($routeProvider) {
 	$routeProvider
 		.when('/', {
 			controller: 'SiteController',
-			templateUrl: 'views/site/main.html',
-			activetab: 'home'
+			templateUrl: 'views/site/main.html'
 		})
 		.otherwise({
 			redirectTo: '/'

@@ -9203,22 +9203,23 @@ blockquote p {
   margin: 0; }
   .navbar-brand {
     font-weight: bold;
-    color: #BAD7FF !important; }
+    color: #FF8500 !important; }
   .navbar-custom {
-    background: #002E5D; }
+    background: #fff;
+    padding-top: 20px; }
     .navbar-custom .nav li a {
       font-weight: bold;
-      color: #BAD7FF;
+      color: #999;
       -webkit-transition: all 0.3s;
       -o-transition: all 0.3s;
       transition: all 0.3s; }
       .navbar-custom .nav li a:hover, .navbar-custom .nav li a:focus {
-        color: #BAD7FF; }
+        color: #666; }
     .navbar-custom .nav li.active a {
-      background: #002E5D;
+      background: #FF8500;
       color: #fff; }
       .navbar-custom .nav li.active a:hover, .navbar-custom .nav li.active a:focus {
-        background: #002E5D;
+        background: #FF8500;
         color: #fff; }
 
 #carousel-home .img {
