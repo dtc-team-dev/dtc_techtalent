@@ -1,0 +1,50 @@
+html, body {
+	width: 100%;
+	height: 100%;
+	position: relative;
+	background-image: url("../img/bg/bg-asia_techtalent.png");
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+
+
+.wrapper__text--comingsoon{
+	position: relative;
+	top: 20%;
+
+	h1, h2, h4, h5{
+		font-family: $font-helvetica-b, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	}
+
+	h1{
+		color: $orange-primary;
+		font-size: 28px;
+	}
+	h2{
+		color: $black-primary;
+		font-size: 60px;
+		margin: 100px 0px!important;
+	}
+	h3{
+		font-family: $font-freehand;
+	}
+	h4{
+		font-size: 18px;
+		margin: 10px 0px 50px!important;
+		a{
+			color: $orange-primary;
+			&:hover{
+				color: $orange-primary;
+				text-decoration: underline;
+			}
+		}
+	}
+	h5{
+		font-size: 14px;
+		font-family: $font-helvetica-r;
+		margin-bottom: 20px!important;
+		span{
+			color: $orange-primary;
+		}
+	}
+}
