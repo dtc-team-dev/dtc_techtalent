@@ -1,4 +1,4 @@
-var app = angular.module("mediaSakti", [
+var app = angular.module("techTalentAsia", [
 	'ngRoute',
 	'ngSanitize'
 ]);
