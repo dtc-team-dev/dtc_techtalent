@@ -9,6 +9,10 @@ app.config(function ($routeProvider) {
 			controller: 'SiteController',
 			templateUrl: 'views/site/main.html'
 		})
+		.when('/', {
+			controller: 'AuthController',
+			templateUrl: 'views/site/login.html'
+		})
 		.otherwise({
 			redirectTo: '/'
 		});
