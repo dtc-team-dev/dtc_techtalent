@@ -9,7 +9,7 @@ app.config(function ($routeProvider) {
 			controller: 'SiteController',
 			templateUrl: 'views/site/main.html'
 		})
-		.when('/', {
+		.when('/login', {
 			controller: 'AuthController',
 			templateUrl: 'views/site/login.html'
 		})

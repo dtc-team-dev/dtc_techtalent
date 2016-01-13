@@ -1,4 +1,5 @@
 $orange : #FF8500;
+$dark-orage : #CC6D05;
 
 $font-bold : 'Helvetica-Bold';
 $font-regular : "Helvetica-Roman";
@@ -19,8 +20,13 @@ textarea {
 }
 
 a {
-	&:hover, &:focus, &:visited, &:active {
+	color: $orange;
+	&:focus, &:visited, &:active {
 		text-decoration: none;
+	}
+	&:hover {
+		text-decoration: none;
+		color: $orange;
 	}
 }
 
@@ -81,18 +87,19 @@ blockquote {
 			width: 100%;
 			padding: 10px 15px;
 			border: none;
-			box-shadow: 0px 5px 25px #ccc;
+			box-shadow: 0px 10px 35px #ccc;
 			border-radius: 5px;
 			outline: none;
+			@include transition(.3s);
 			&:focus {
-				box-shadow: 0px 5px 25px #ccc;
+				box-shadow: 0px 10px 35px #999;
 			}
 		}
 		button {
 			background: $orange;
 			color: #fff;
 			font-weight: bold;
-			padding: 6px 11px;
+			padding: 6px 16px;
 			border: none;
 			border-radius: 3px;
 			position: absolute;
@@ -100,6 +107,10 @@ blockquote {
 			top: 3.5px;
 			right: 4px;
 			outline: none;
+			@include transition(.3s);
+			&:hover {
+				background: $dark-orage;
+			}
 		}
 	}
 }
