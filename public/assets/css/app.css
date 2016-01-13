@@ -9967,6 +9967,10 @@ blockquote p {
 .no-margin {
   margin: 0 !important; }
 
+.col-centered {
+  float: none;
+  margin: 0 auto; }
+
 @media (max-width: 767px) {
   .desktop {
     display: none; } }
@@ -10043,13 +10047,13 @@ blockquote p {
       float: right;
       margin-top: -45px; } }
 
-.form-login {
+.form-signup {
   max-width: 450px;
   margin: auto;
   margin-top: 250px;
   font-size: 16px; }
   @media (max-width: 767px) {
-    .form-login {
+    .form-signup {
       margin-top: 35vh; } }
 
 .linkedin-login {
@@ -10059,3 +10063,41 @@ blockquote p {
   .linkedin-login img {
     height: 40px;
     margin-bottom: 10px; }
+
+.login-form {
+  margin-top: 100px; }
+  @media (max-width: 767px) {
+    .login-form {
+      margin-top: 35px; } }
+  .login-form .logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #FF8500 !important; }
+  .login-form .form-login {
+    margin: 20px 0 85px; }
+    .login-form .form-login input {
+      margin: 10px 0;
+      height: 40px; }
+    .login-form .form-login button {
+      height: 40px; }
+    .login-form .form-login .btn-login {
+      margin-top: 25px;
+      background: #FF8500;
+      color: white;
+      font-weight: bold; }
+    .login-form .form-login .btn-signup {
+      background: #E1E7EB;
+      font-weight: bold; }
+    .login-form .form-login a {
+      color: #FF8500; }
+    .login-form .form-login hr {
+      border-color: #E1E7EB; }
+  .login-form .login-desc {
+    font-size: 12px;
+    color: #585858; }
+    .login-form .login-desc a {
+      color: #585858; }
+    .login-form .login-desc span {
+      display: inherit;
+      margin-top: 5px;
+      margin-bottom: 25px; }
