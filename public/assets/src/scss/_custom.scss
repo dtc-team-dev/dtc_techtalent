@@ -4,50 +4,6 @@
 	background: url(/bg-asia_techtalent.png) no-repeat center;
 }
 
-#connection {
-	width: 800px;
-	height: 600px;
-	margin: auto;
-	position: absolute;
-	top: 0;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	z-index: 0;
-}
-
-.top-absolute {
-	width: 800px;
-	height: 600px;
-	margin: auto;
-	position: absolute;
-	top: 0;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	z-index: 1;
-	.users {
-		width: 800px;
-		height: 600px;
-		margin: auto;
-		position: relative;
-		.user {
-			width: 80px;
-			height: 80px;
-			border-radius: 50%;
-			position: absolute;
-			border: 3px solid #fff;
-			box-shadow: 0px 10px 35px #ccc;
-			@include transition(.2s);
-			&:hover {
-				width: 100px;
-				height: 100px;
-				margin-left: -10px;
-				margin-top: -10px;
-			}
-		}
-	}
-}
 
 .navbar {
 	border: none;
@@ -94,42 +50,17 @@
 .form-signup {
 	max-width: 450px;
 	margin: auto;
-	margin-top: 320px;
+	margin-top: 250px;
 	font-size: 16px;
-	z-index: 9;
-	position: relative;
 	@media (max-width: 767px) {
 		margin-top: 35vh;
 	}
 }
 
-.signup {
-	width: 215px;
-	text-align: center;
-	margin: auto;
-	display: block;
-	position: relative;
-	z-index: 9;
-	background: $orange;
-	color: #fff;
-	border: none;
-	padding: 10px;
-	border-radius: 3px;
-	font-weight: bold;
-	letter-spacing: 1px;
-	@include transition(.3s);
-	&:hover {
-		background: $light-orange;
-		color: #fff !important;
-		box-shadow: 0px 10px 35px #eee;
-	}
-}
-
 .linkedin-login {
 	text-align: center;
+	margin-top: 170px;
 	padding-bottom: 20px;
-	position: relative;
-	z-index: 9;
 	img {
 		height: 40px;
 		margin-bottom: 10px;
@@ -137,17 +68,21 @@
 }
 
 .login-form{
-	margin-top: 100px;
+	// margin: 100px 0;
 	@media (max-width: 767px) {
-		margin-top: 35px;
+		margin: 35px 0;
 	}
+	position: relative;
+	top: 50%;
+	margin: 0;
+	transform: translateY(-50%);
 	.logo{
 		font-size: 24px;
 		font-weight: bold;
 		color: $orange !important;
 	}
 	.form-login{
-		margin: 20px 0 85px;
+		margin: 20px 0 0px;
 		input{
 			margin: 10px 0;
 			height: 40px;
@@ -170,6 +105,14 @@
 		}
 		hr{
 			border-color: #E1E7EB;
+		}
+		span{
+			position: absolute;
+			background: $white;
+			bottom: 52px;
+			width: 30px;
+			margin-left: -13px;
+			font-family: Georgia,Times,"Times New Roman",serif;
 		}
 	}
 	.login-desc{
