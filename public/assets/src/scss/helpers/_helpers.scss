@@ -110,6 +110,10 @@ blockquote {
 	color: #999;
 }
 
+.m-t-430 {
+	margin-top: 430px;
+}
+
 .form-custom {
 	.input-custom {
 		width: 100%;
@@ -157,7 +161,7 @@ blockquote {
 			outline: none;
 			@include transition(.3s);
 			&:hover {
-				background: $dark-orage;
+				background: $dark-orange;
 			}
 		}
 	}

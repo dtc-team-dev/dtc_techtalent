@@ -9263,6 +9263,9 @@ blockquote p {
 .font-gray {
   color: #999; }
 
+.m-t-430 {
+  margin-top: 430px; }
+
 .form-custom .input-custom {
   width: 100%;
   padding: 10px 0px;
@@ -9362,7 +9365,10 @@ blockquote p {
       border-radius: 50%;
       position: absolute;
       border: 3px solid #fff;
-      box-shadow: 0px 10px 35px #ccc; }
+      box-shadow: 0px 10px 35px #ccc;
+      -webkit-transition: all 0.2s;
+      -o-transition: all 0.2s;
+      transition: all 0.2s; }
 
 .navbar {
   border: none;
@@ -9405,18 +9411,29 @@ blockquote p {
       margin-top: 35vh; } }
 
 .signup {
-  width: 220px;
+  width: 215px;
   text-align: center;
   margin: auto;
-  margin-top: 220px;
   display: block;
   position: relative;
   z-index: 9;
-  background: #FF8500; }
+  background: #FF8500;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  border-radius: 3px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  -webkit-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s; }
+  .signup:hover {
+    background: #FFA500;
+    color: #fff !important;
+    box-shadow: 0px 10px 35px #eee; }
 
 .linkedin-login {
   text-align: center;
-  margin-top: 20px;
   padding-bottom: 20px;
   position: relative;
   z-index: 9; }
