@@ -9369,6 +9369,11 @@ blockquote p {
       -webkit-transition: all 0.2s;
       -o-transition: all 0.2s;
       transition: all 0.2s; }
+      .top-absolute .users .user:hover {
+        width: 100px;
+        height: 100px;
+        margin-left: -10px;
+        margin-top: -10px; }
 
 .navbar {
   border: none;
