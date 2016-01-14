@@ -11,6 +11,10 @@ app.use(morgan('dev'));
 
 app.use(express.static(__dirname + '/public'));
 app.use(express.static(__dirname + '/public/assets/img'));
+
+var api = require('./routes/userApi')(app, express);
+app.use('/user',api);
+
 /*app.get('*', function(req,res){
     res.sendFile(__dirname + '/public');
 });

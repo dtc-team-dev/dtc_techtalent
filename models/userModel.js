@@ -1,16 +1,23 @@
-var mongoose = require('mongoose'),
-    Schema = mongoose.schema,
-    bcrypt = require('bcrypt-nodejs'),
-
-    UserSchema = new Schema({
-        username    : {type : String, required:true, index: {unique : true}},
-        email       : {type : String, required:true},
-        password    : {type : String, required:true, select: false},
-        token       : {type : String, required:true, select: false},
-        activated   : [Boolean]
+var mongoose    = require('mongoose'),
+    Schema      = mongoose.Schema,
+    config      = require('../config/main'),
+    libFunct    = require('../lib/function-model'),
+    userSchema = new Schema({
+        email       : {type : String, required : true},
+        username    : {type : String, required : true, index : {unique : true}},
+        password    : {type : String, required : true, select : false},
+        token       : {type : String, select : false},
+        activated   : {type : Boolean}
     });
 
-UserSchema.pre('save', function(next){
+userSchema.pre('save', function(next){
+    this.token = libFunct.createToken(this.email);
+
+    next();
+});
+
+
+/*UserSchema.pre('save', function(next){
     var user = this;
     if(!user.isModified('password')) return next();
 
@@ -26,6 +33,6 @@ UserSchema.methods.comparePassword = function(password){
     var user = this;
 
     return bcrypt.compareSync(password, user.password);
-}
+}*/
 
-module.exports = mongoose.model('user_account', UserSchema);
+module.exports = mongoose.model('user_account', userSchema);
