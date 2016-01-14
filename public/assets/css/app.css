@@ -9196,6 +9196,9 @@ blockquote p {
   float: none;
   margin: 0 auto; }
 
+.font-gray {
+  color: #999; }
+
 @media (max-width: 767px) {
   .desktop {
     display: none; } }
@@ -9205,6 +9208,27 @@ blockquote p {
   @media (max-width: 767px) {
     .mobile {
       display: inline-block; } }
+
+.form-custom .input-custom {
+  width: 100%;
+  padding: 10px 0px;
+  box-shadow: 0px 10px 35px #fff;
+  border-radius: 0px;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid #eee;
+  -webkit-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s; }
+  .form-custom .input-custom:focus {
+    border-bottom: 1px solid #FF8500; }
+
+.form-custom button {
+  -webkit-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s; }
+  .form-custom button:hover {
+    box-shadow: 0px 10px 35px #eee; }
 
 .form-custom .input-button {
   position: relative; }
