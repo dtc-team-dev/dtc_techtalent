@@ -9240,7 +9240,7 @@ blockquote p {
 .bg {
   width: 100%;
   min-height: 100vh;
-  background: url(/public/assets/img/bg-asia_techtalent.png) no-repeat center; }
+  background: url(/bg-asia_techtalent.png) no-repeat center; }
 
 .navbar {
   border: none;
