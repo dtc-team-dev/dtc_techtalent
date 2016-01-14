@@ -9209,6 +9209,27 @@ blockquote p {
     .mobile {
       display: inline-block; } }
 
+.form-custom .input-custom {
+  width: 100%;
+  padding: 10px 0px;
+  box-shadow: 0px 10px 35px #fff;
+  border-radius: 0px;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid #eee;
+  -webkit-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s; }
+  .form-custom .input-custom:focus {
+    border-bottom: 1px solid #FF8500; }
+
+.form-custom button {
+  -webkit-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s; }
+  .form-custom button:hover {
+    box-shadow: 0px 10px 35px #eee; }
+
 .form-custom .input-button {
   position: relative; }
   .form-custom .input-button input {
@@ -9239,31 +9260,6 @@ blockquote p {
     transition: all 0.3s; }
     .form-custom .input-button button:hover {
       background: #CC6D05; }
-
-.form-custom input[type="text"],
-.form-custom input[type="email"],
-.form-custom input[type="password"] {
-  width: 100%;
-  padding: 10px 0px;
-  box-shadow: 0px 10px 35px #fff;
-  border-radius: 0px;
-  outline: none;
-  border: none;
-  border-bottom: 1px solid #eee;
-  -webkit-transition: all 0.3s;
-  -o-transition: all 0.3s;
-  transition: all 0.3s; }
-  .form-custom input[type="text"]:focus,
-  .form-custom input[type="email"]:focus,
-  .form-custom input[type="password"]:focus {
-    border-bottom: 1px solid #FF8500; }
-
-.form-custom button {
-  -webkit-transition: all 0.3s;
-  -o-transition: all 0.3s;
-  transition: all 0.3s; }
-  .form-custom button:hover {
-    box-shadow: 0px 10px 35px #eee; }
 
 .bg {
   width: 100%;

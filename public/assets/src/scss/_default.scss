@@ -90,6 +90,25 @@ blockquote {
 
 
 .form-custom {
+	.input-custom {
+		width: 100%;
+		padding: 10px 0px;
+		box-shadow: 0px 10px 35px #fff;
+		border-radius: 0px;
+		outline: none;
+		border: none;
+		border-bottom: 1px solid #eee;
+		@include transition(.3s);
+		&:focus {
+			border-bottom: 1px solid $orange;
+		}
+	}
+	button {
+		@include transition(.3s);
+		&:hover {
+			box-shadow: 0px 10px 35px #eee;
+		}
+	}
 	.input-button {
 		position: relative;
 		input {
@@ -119,27 +138,6 @@ blockquote {
 			&:hover {
 				background: $dark-orage;
 			}
-		}
-	}
-	input[type="text"],
-	input[type="email"],
-	input[type="password"] {
-		width: 100%;
-		padding: 10px 0px;
-		box-shadow: 0px 10px 35px #fff;
-		border-radius: 0px;
-		outline: none;
-		border: none;
-		border-bottom: 1px solid #eee;
-		@include transition(.3s);
-		&:focus {
-			border-bottom: 1px solid $orange;
-		}
-	}
-	button {
-		@include transition(.3s);
-		&:hover {
-			box-shadow: 0px 10px 35px #eee;
 		}
 	}
 }
