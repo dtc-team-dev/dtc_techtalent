@@ -1,10 +1,19 @@
+/**
+*
+* Created by Ray & Gifa | January 2016
+*
+**/
+
+
 
 @import
 	'../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap',
-	'../../libs/wow/css/animate.scss',
-	'../../bower_components/components-font-awesome/scss/font-awesome';
+	'../../bower_components/components-font-awesome/scss/font-awesome',
+	'../../libs/wow/css/animate.scss';
 
 @import
-	'font',
-	'default',
+	'helpers/variables',
+	'helpers/font',
+	'helpers/helpers',
+	'helpers/mixins',
 	'custom';
