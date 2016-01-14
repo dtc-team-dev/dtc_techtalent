@@ -1,10 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title></title>
+	
+	<meta charset="UTF-8">
+
+	<title>Tech Talent Asia</title>
+	
+	<meta name="keyword" content="">
+
+	<meta name="description" content="">
+
+	<meta name="author" content="">
+
+	<meta property="og:image" content="img/logo.png" />
+
+	<meta charset="UTF-8">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+	<!-- <link rel="icon" sizes="16x16" href="img/favicon.png" /> -->
+
+	<!-- Library css -->
+	<link rel="stylesheet" href="assets/css/app.css">
+
+	<script src="app/libs/angular.min.js"></script>
+
 </head>
-<body>
-Hello World
+
+<body id="main" ng-app="techTalentAsia">
+
+	<section ng-view></section>
+
+
+	
+	<!-- Libraries JS -->
+	<script src="assets/js/vendor.js"></script>
+	<script type="text/javascript">
+		angular.element(document.getElementsByTagName('head')).append(angular.element('<base href="' + window.location.pathname + '" />'));
+	</script>
+
+	<!-- Modules -->
+	<script src="app/app.js"></script>
+
+	<!-- Directives -->
+
+
+	<!-- Controllers -->
+	<script src="app/controllers/SiteController.js"></script>
+
+	<!-- Services -->
+
+
+	<!-- Libs -->
+	<script src="app/libs/angular-sanitize.min.js"></script>
+	<script src="app/libs/angular-route.min.js"></script>
+
 </body>
 </html>

@@ -31,13 +31,11 @@ module.exports = function(grunt) {
       },
       vendor: {
         src: [
-          'bower_components/angular/angular.js',
-          'bower_components/bootstrap-sass/assets/javascripts/bootstrap.js',
-          'bower_components/components-font-awesome/',
           'bower_components/jquery/dist/jquery.js',
-          'bower_components/modernizr/src/Modernizr.js',
-          'src/js/custom.js',
-          '../modules/app.js',
+          'bower_components/bootstrap-sass/assets/javascripts/bootstrap.js',
+          'bower_components/modernizr/modernizr.js',
+          'libs/wow/wow.js',
+          'src/js/custom.js'
         ],
         dest: 'js/vendor.js'
       }

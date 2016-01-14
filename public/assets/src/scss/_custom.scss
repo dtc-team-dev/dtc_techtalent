@@ -1,50 +1,118 @@
-html, body {
+.bg {
 	width: 100%;
-	height: 100%;
-	position: relative;
-	background-image: url("../img/bg/bg-asia_techtalent.png");
-	background-repeat: no-repeat;
-	background-position: center center;
+	min-height: 100vh;
+	background: url(/public/assets/img/bg-asia_techtalent.png) no-repeat center;
 }
 
 
-.wrapper__text--comingsoon{
-	position: relative;
-	top: 20%;
-
-	h1, h2, h4, h5{
-		font-family: $font-helvetica-b, "Helvetica Neue", Helvetica, Arial, sans-serif;
+.navbar {
+	border: none;
+	border-radius: 0;
+	margin: 0;
+	&-brand {
+		font-weight: bold;
+		color: $orange !important;
 	}
-
-	h1{
-		color: $orange-primary;
-		font-size: 28px;
-	}
-	h2{
-		color: $black-primary;
-		font-size: 60px;
-		margin: 100px 0px!important;
-	}
-	h3{
-		font-family: $font-freehand;
-	}
-	h4{
-		font-size: 18px;
-		margin: 10px 0px 50px!important;
-		a{
-			color: $orange-primary;
-			&:hover{
-				color: $orange-primary;
-				text-decoration: underline;
+	&-custom {
+		background: transparent;
+		padding-top: 20px;
+		.nav {
+			li {
+				a {
+					font-weight: bold;
+					color: #999;
+					@include transition(.3s);
+					&:hover, &:focus {
+						color: #666;
+					}
+				}
+				&.active {
+					a {
+						background: $orange;
+						color: #fff;
+						&:hover, &:focus {
+							background: $orange;
+							color: #fff;
+						}
+					}
+				}
 			}
 		}
 	}
-	h5{
-		font-size: 14px;
-		font-family: $font-helvetica-r;
-		margin-bottom: 20px!important;
+	&-right {
+		@media (max-width: 767px) {
+			float: right;
+			margin-top: -45px;
+		}
+	}
+}
+
+.form-signup {
+	max-width: 450px;
+	margin: auto;
+	margin-top: 250px;
+	font-size: 16px;
+	@media (max-width: 767px) {
+		margin-top: 35vh;
+	}
+}
+
+.linkedin-login {
+	text-align: center;
+	margin-top: 170px;
+	padding-bottom: 20px;
+	img {
+		height: 40px;
+		margin-bottom: 10px;
+	}
+}
+
+.login-form{
+	margin-top: 100px;
+	@media (max-width: 767px) {
+		margin-top: 35px;
+	}
+	.logo{
+		font-size: 24px;
+		font-weight: bold;
+		color: $orange !important;
+	}
+	.form-login{
+		margin: 20px 0 85px;
+		input{
+			margin: 10px 0;
+			height: 40px;
+		}
+		button{
+			height: 40px;
+		}
+		.btn-login{
+			margin-top: 25px;
+			background: $orange;
+			color: white;
+			font-weight: bold;
+		}
+		.btn-signup{
+			background: #E1E7EB;
+			font-weight: bold;
+		}
+		a{
+			color: $orange;
+		}
+		hr{
+			border-color: #E1E7EB;
+		}
+	}
+	.login-desc{
+		font-size: 12px;
+		color: #585858;
+		a{
+			color: #585858;
+		}
 		span{
-			color: $orange-primary;
+			display: inherit;
+			margin-top: 5px;
+			margin-bottom: 25px;
 		}
 	}
 }
