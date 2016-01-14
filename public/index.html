@@ -26,18 +26,132 @@
 
 	<script src="app/libs/angular.min.js"></script>
 
+	<script src="assets/js/vendor.js"></script>
 </head>
 
 <body id="main" ng-app="techTalentAsia">
 
 	<section ng-view></section>
 
+	<div class="top-absolute">
+		<div class="users">
+			<img src="" alt="" class="user user-1">
+			<img src="" alt="" class="user user-2">
+			<img src="" alt="" class="user user-3">
+			<img src="" alt="" class="user user-4">
+			<img src="" alt="" class="user user-5">
+			<img src="" alt="" class="user user-6">
+			<img src="" alt="" class="user user-7">
+			<img src="" alt="" class="user user-8">
+			<img src="" alt="" class="user user-9">
+			<img src="" alt="" class="user user-10">
+		</div>
+	</div>
 
-	
+	<canvas id="connection" width="800px" height="600px">Your browser does not support the HTML5 canvas tag.</canvas>
+
+	<script>
+		var c = document.getElementById("connection");
+		var ctx = c.getContext("2d");		
+
+		/*----------  Center  ----------*/
+		
+		ctx.moveTo(400,300);
+		ctx.lineTo(350,100);
+
+		ctx.moveTo(400,300);
+		ctx.lineTo(220,230);
+		
+		ctx.moveTo(400,300);
+		ctx.lineTo(220,430);
+		
+		ctx.moveTo(400,300);
+		ctx.lineTo(550,180);
+
+		ctx.moveTo(400,300);
+		ctx.lineTo(680,320);
+
+		ctx.moveTo(400,300);
+		ctx.lineTo(550,430);
+
+		ctx.moveTo(400,300);
+		ctx.lineTo(350,450);
+
+		/*----------  /Center  ----------*/
+
+
+
+		ctx.moveTo(350,100);
+		ctx.lineTo(120,130);
+
+		ctx.moveTo(350,100);
+		ctx.lineTo(220,230);
+
+		ctx.moveTo(350,100);
+		ctx.lineTo(700,100);
+
+		ctx.moveTo(350,100);
+		ctx.lineTo(550,180);
+		
+		ctx.strokeStyle="#999";
+		ctx.stroke();
+	</script>
+
 	<!-- Libraries JS -->
-	<script src="assets/js/vendor.js"></script>
 	<script type="text/javascript">
 		angular.element(document.getElementsByTagName('head')).append(angular.element('<base href="' + window.location.pathname + '" />'));
+	</script>
+	<!-- jQuery -->
+	<script>
+		$('.user-1').attr("src","/assets/img/users/1.jpg").css({
+			"left": "calc(400px - 40px)",
+			"top": "calc(300px - 40px)"
+		});
+		
+		$('.user-2').attr("src","/assets/img/users/2.jpg").css({
+			"left": "calc(340px - 40px)",
+			"top": "calc(100px - 40px)"
+		});
+
+		$('.user-3').attr("src","/assets/img/users/3.jpg").css({
+			"left": "calc(220px - 40px)",
+			"top": "calc(230px - 40px)"
+		});
+
+		$('.user-4').attr("src","/assets/img/users/4.jpg").css({
+			"left": "calc(220px - 40px)",
+			"top": "calc(430px - 40px)"
+		});
+
+		$('.user-5').attr("src","/assets/img/users/5.jpg").css({
+			"left": "calc(550px - 40px)",
+			"top": "calc(180px - 40px)"
+		});
+
+		$('.user-6').attr("src","/assets/img/users/6.jpg").css({
+			"left": "calc(680px - 40px)",
+			"top": "calc(320px - 40px)"
+		});
+
+		$('.user-7').attr("src","/assets/img/users/7.jpg").css({
+			"left": "calc(550px - 40px)",
+			"top": "calc(430px - 40px)"
+		});
+
+		$('.user-8').attr("src","/assets/img/users/8.jpg").css({
+			"left": "calc(350px - 40px)",
+			"top": "calc(450px - 40px)"
+		});
+
+		$('.user-9').attr("src","/assets/img/users/9.jpg").css({
+			"left": "calc(120px - 40px)",
+			"top": "calc(130px - 40px)"
+		});
+
+		$('.user-10').attr("src","/assets/img/users/10.jpg").css({
+			"left": "calc(700px - 40px)",
+			"top": "calc(100px - 40px)"
+		});
 	</script>
 
 	<!-- Modules -->
