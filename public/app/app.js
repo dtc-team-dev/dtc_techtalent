@@ -3,7 +3,7 @@ var app = angular.module("techTalentAsia", [
 	'ngSanitize'
 ]);
 
-app.config(function ($routeProvider) {
+app.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
 	$routeProvider
 		.when('/', {
 			controller: 'SiteController',
@@ -16,4 +16,6 @@ app.config(function ($routeProvider) {
 		.otherwise({
 			redirectTo: '/'
 		});
-});
+
+	$locationProvider.html5Mode(true);
+}]);
