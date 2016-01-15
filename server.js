@@ -11,6 +11,7 @@ app.use(morgan('dev'));
 
 app.use(express.static(__dirname + '/public'));
 app.use(express.static(__dirname + '/public/assets/img'));
+app.use(express.static(__dirname + '/public/app'));
 
 var api = require('./routes/userApi')(app, express);
 app.use('/user',api);
