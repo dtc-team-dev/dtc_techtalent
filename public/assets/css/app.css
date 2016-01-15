@@ -10291,7 +10291,7 @@ blockquote p {
     margin: auto; }
 
 #modalRegister .modal-header {
-  padding: 20px 40px 15px;
+  padding: 40px 40px 15px;
   border-bottom: none; }
   #modalRegister .modal-header .modal-title {
     font-size: 28px; }
@@ -10304,7 +10304,7 @@ blockquote p {
     margin-bottom: 0 !important; }
 
 #modalRegister .modal-body {
-  padding: 0px 40px 20px; }
+  padding: 0px 40px 40px; }
   #modalRegister .modal-body form .form-control {
     margin-top: 10px !important;
     height: 40px; }
