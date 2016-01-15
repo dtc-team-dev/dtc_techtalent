@@ -14,7 +14,39 @@
 		<div class="m-t-430">
 			
 			<div class="col-md-6">
-				<a href="#/signup" class="signup pull-right">Sign Up</a>
+				<a href="#/signup" class="signup pull-right" data-toggle="modal" data-target="#modalRegister">Sign Up</a>
+			</div>
+
+			<!-- Modal -->
+			<div class="modal fade" id="modalRegister" tabindex="-1" role="dialog" aria-labelledby="modalRegisterLabel">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							<h4 class="modal-title" id="modalRegisterLabel"><strong>Sign Up for Free</strong></h4>
+							<span class="font-gray">Choose on of the following up sign up methods</span>
+							<div class="linkedin-login">
+								<a href=""><img src="assets/img/Sign-In-Large---Active.png" alt="Sign In with Linkedin"></a>
+							</div>
+							<br>
+							<hr>
+						</div>
+						<div class="modal-body">
+							<div class="row no-margin">
+								<div class="col-md-12 col-centered col-sm-12 no-padding">
+									<form action="" class="form-login form-custom">
+										<span class="font-gray">Or sign up using your email address</span>
+										<input type="text" class="form-control" placeholder="User name">
+										<input type="email" class="form-control" placeholder="Email">
+										<input type="password" class="form-control" placeholder="Password">
+										<p class="text-left font-gray">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae blanditiis est consequuntur omnis optio.</p>
+										<button type="button" class="btn btn-login">Create Account</button>
+									</form> 
+							</div> 
+								</div>
+						</div>						
+					</div>
+				</div>
 			</div>
 
 			<div class="col-md-6">
