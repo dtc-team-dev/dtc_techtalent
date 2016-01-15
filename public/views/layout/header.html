@@ -6,10 +6,18 @@
 			</div>
 
 			<!-- Collect the nav links, forms, and other content for toggling -->
-			<div class="" id="bs-example-navbar-collapse-1">
+			<div class="" id="bs-example-navbar-collapse-1" ng-if="!login.loggedIn">
 
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="#/login">Log In</a></li>
+				</ul>
+
+			</div><!-- /.navbar-collapse -->
+
+			<div class="" id="bs-example-navbar-collapse-1" ng-if="login.loggedIn">
+
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="#" ng-click="login.doLogout()">Log Out</a></li>
 				</ul>
 
 			</div><!-- /.navbar-collapse -->

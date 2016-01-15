@@ -1,17 +1,19 @@
 var app = angular.module("techTalentAsia", [
 	'ngRoute',
-	'ngSanitize'
+	'ngSanitize',
 ]);
 
 app.config(function ($routeProvider) {
 	$routeProvider
 		.when('/', {
-			controller: 'SiteController',
-			templateUrl: 'views/site/main.html'
+			controller: 'LoginController',
+			templateUrl: 'views/site/main.html',
+			controllerAs: 'login'
 		})
 		.when('/login', {
-			controller: 'AuthController',
-			templateUrl: 'views/site/login.html'
+			controller: 'LoginController',
+			templateUrl: 'views/site/login.html',
+			controllerAs: 'login'
 		})
 		.otherwise({
 			redirectTo: '/'

@@ -11,9 +11,9 @@
 				
 				<span class="logo">Tech Talent Asia</span>
 
-				<form action="" class="form-login form-custom">
-					<input type="email" class="input-custom" placeholder="Email">
-					<input type="password" class="input-custom" placeholder="Password">
+				<form method="post" ng-submit="login.doLogin()" class="form-login form-custom">
+					<input type="email" class="input-custom" placeholder="Email" name="email" ng-model="login.loginData.email">
+					<input type="password" class="input-custom" placeholder="Password" name="password" ng-model="login.loginData.password">
 					<button type="submit" class="btn btn-block btn-login">Log In</button>
 					<br>
 					<div class="checkbox pull-left font-gray">

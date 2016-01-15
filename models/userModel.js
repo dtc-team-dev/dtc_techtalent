@@ -4,8 +4,8 @@ var mongoose    = require('mongoose'),
     libFunct    = require('../lib/function-model'),
     bcrypt      = require('bcrypt-nodejs'),
     userSchema = new Schema({
-        email       : {type : String, required : true},
-        username    : {type : String, required : true, index : {unique : true}},
+        email       : {type : String, required : true, index : {unique : true}},
+        username    : {type : String, required : true},
         password    : {type : String, required : true, select : false},
         token       : {type : String, select : false},
         activated   : {type : Boolean}

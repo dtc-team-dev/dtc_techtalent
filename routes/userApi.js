@@ -63,11 +63,11 @@ module.exports = function(app, express){
     api.post('/login', function(req, res) {
 
         User.findOne({ 
-            username: req.body.username
-        }).select('username password').exec(function(err, user) {
+            'email' : req.body.email
+        }).select('username password token').exec(function(err, user) {
             if(err) throw err;
             if(!user) {
-                res.send({ message: "User doenst exist"});
+                res.send({ message: "User doesnt exist"});
             } else if(user){ 
                 var validPassword = user.comparePassword(req.body.password);
                 if(!validPassword) {
@@ -75,6 +75,7 @@ module.exports = function(app, express){
                 } else {
                     res.json({
                         success: true,
+                        token: user.token,
                         message: "Successfuly login!",
                     });
                 }
@@ -92,6 +93,10 @@ module.exports = function(app, express){
             res.json(users);
         });
     });
+
+	api.get('/me', function(req, res) {
+		res.send(req.decoded);
+	}); 
 
     return api
 }
