@@ -37,6 +37,18 @@ module.exports = function(app, express){
 		});
     });
 
+    /*user activated by Andri*/
+    api.get('/activated/:token', function(req,res){
+		var resp = User.findOneAndUpdate({'token' : req.params.token}, 
+			{activated : true}, function(err, user){
+            if(err) {
+                res.send(err);
+                return;
+            }
+            res.json({ message : "User Activated"});
+		});
+    });
+
     /*user getuser by id create by Andri*/
     api.get('/getuser/:id', function(req, res) {
         User.findOne({'_id' : req.params.id}, function(err, user) {
@@ -64,7 +76,7 @@ module.exports = function(app, express){
 
         User.findOne({ 
             'email' : req.body.email
-        }).select('username password token').exec(function(err, user) {
+        }).select('username password activated token').exec(function(err, user) {
             if(err) throw err;
             if(!user) {
                 res.send({ message: "User doesnt exist"});
@@ -73,11 +85,15 @@ module.exports = function(app, express){
                 if(!validPassword) {
                     res.send({ message: "Invalid Password"});
                 } else {
-                    res.json({
-                        success: true,
-                        token: user.token,
-                        message: "Successfuly login!",
-                    });
+                	if(user.activated === false){
+                		res.send({ message: "User Doesnt Active"});
+                	}else{
+	                    res.json({
+	                        success: true,
+	                        token: user.token,
+	                        message: "Successfuly login!",
+	                    });
+                	}
                 }
             }
         });

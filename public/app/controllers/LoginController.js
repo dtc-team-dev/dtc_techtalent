@@ -1,24 +1,20 @@
 app
 
-.controller('LoginController', function($rootScope, $location, Auth) {
+.controller('LoginController', function($rootScope, $location, $window, Login) {
 
 	var vm = this;
 
-
-
-	vm.loggedIn = Auth.isLoggedIn();
+	vm.loggedIn = Login.isLoggedIn();
 
 	$rootScope.$on('$routeChangeStart', function() {
-
-		vm.loggedIn = Auth.isLoggedIn();
-
-		Auth.getUser()
+		vm.loggedIn = Login.isLoggedIn();
+		Login.getUser()
 			.then(function(data) {
 				vm.user = data.data;
 			});
 	});
 
-
+	/*Function Klik untuk Login*/
 	vm.doLogin = function() {
 
 		vm.processing = true;
@@ -26,30 +22,29 @@ app
 		vm.error = '';
 		
 
-		Auth.login(vm.loginData.email, vm.loginData.password)
+		Login.login(vm.loginData.email, vm.loginData.password)
 			.success(function(data) {
-
-				console.log(data);
 
 				vm.processing = false;
 
-				Auth.getUser()
+				Login.getUser()
 					.then(function(data) {
 						vm.user = data.data;
 					});
 
-				if(data.success)
+				if(data.success){
 					$location.path('/');
-				else
+				}else{
 					vm.error = data.message;
-
+					alert(vm.error);
+				}
 			});
 	}
 
-
+	/*Function Klik untuk Logout*/
 	vm.doLogout = function() {
-		Auth.logout();
-		$location.path('/');
+		Login.logout();
+		$window.location.reload();
 	}
 
 

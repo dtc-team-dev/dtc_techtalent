@@ -1,72 +1,72 @@
 app
 
+/*factory untuk Login*/
+.factory('Login', function($http, $q, CekToken) {
 
-.factory('Auth', function($http, $q, AuthToken) {
+	var cekFactory = {};
 
-
-	var authFactory = {};
-
-
-	authFactory.login = function(email, password) {
-
-		return $http.post('http://localhost:3000/user/login', {
+	/*function login untuk menghubungkan ke userApi*/
+	cekFactory.login = function(email, password) {
+		return $http.post('/user/login', {
 			email: email,
 			password: password
 		})
 		.success(function(data) {
-			AuthToken.setToken(data.token);
+			CekToken.setToken(data.token);
 			return data;
 		})
 	}
 
-	authFactory.logout = function() {
-		AuthToken.setToken();
+	/*function Logout untuk setting token*/
+	cekFactory.logout = function() {
+		CekToken.setToken();
 	}
 
-	authFactory.isLoggedIn = function() {
-		if(AuthToken.getToken())
+	/*function mengecek ketika user telah login*/
+	cekFactory.isLoggedIn = function() {
+		if(CekToken.getToken())
 				return true;
 		else
 			return false;
 	}
 
-	authFactory.getUser = function() {
-		if(AuthToken.getToken())
-			return $http.get('http://localhost:3000/user/me');
+	/*function untuk mendapatkan akun ketika login*/
+	cekFactory.getUser = function() {
+		if(CekToken.getToken())
+			return $http.get('/user/me');
 		else
 			return $q.reject({ message: "User has no token"});
 
 	}
 
-
-	return authFactory;
+	return cekFactory;
 
 })
 
 
-.factory('AuthToken', function($window) {
+.factory('CekToken', function($window) {
 
-	var authTokenFactory = {};
+	var cekTokenFactory = {};
 
-	authTokenFactory.getToken = function() {
+	/*function untuk mengambil nilai token yang telah di simpan di localStorage*/
+	cekTokenFactory.getToken = function() {
 		return $window.localStorage.getItem('token');
 	}
 
-	authTokenFactory.setToken = function(token) {
-
+	/*function untuk setting nilai token pada localstorage*/
+	cekTokenFactory.setToken = function(token) {
 		if(token)
 			$window.localStorage.setItem('token', token);
 		else
 			$window.localStorage.removeItem('token');
-
 	}
 
-	return authTokenFactory;
+	return cekTokenFactory;
 
 })
 
 
-.factory('AuthInterceptor', function($q, $location, AuthToken) {
+/*.factory('AuthInterceptor', function($q, $location, AuthToken) {
 
 	var interceptorFactory = {};
 
@@ -78,15 +78,12 @@ app
 		if(token) {
 
 			config.headers['x-access-token'] = token;
-
 		}
-
 		return config;
-
 	};
 
 	
 	return interceptorFactory;
 });
-
+*/
 
