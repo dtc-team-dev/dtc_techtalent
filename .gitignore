@@ -52,3 +52,4 @@ node_modules/
 
 public/assets/bower_components/
 public/assets/node_modules/
+public/assets/css/app.css
