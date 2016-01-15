@@ -9,7 +9,7 @@
 	height: 600px;
 	margin: auto;
 	position: absolute;
-	top: 0;
+	top: -50px;
 	bottom: 0;
 	left: 0;
 	right: 0;
@@ -21,7 +21,7 @@
 	height: 600px;
 	margin: auto;
 	position: absolute;
-	top: 0;
+	top: -50px;
 	bottom: 0;
 	left: 0;
 	right: 0;
@@ -44,6 +44,7 @@
 				height: 100px;
 				margin-left: -10px;
 				margin-top: -10px;
+				box-shadow: 0px 10px 35px #999;
 			}
 		}
 	}
