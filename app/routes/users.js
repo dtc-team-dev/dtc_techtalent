@@ -7,6 +7,7 @@ var User = require('../models/users'),
 module.exports = function(app, express){
 
     var api = express.Router();
+
     /*var auth = function (req, res, next) {
         function unauthorized(res) {
             res.set('WWW-Authenticate', 'Basic realm=Authorization Required');
@@ -26,14 +27,7 @@ module.exports = function(app, express){
         }
     };*/
 
-    function createJWT(req,res,next){
-        var payload = {
-            sub: User._id,
-            iat: moment().unix(),
-            exp: moment().add(14, 'days').unix()
-        };
-        return jwt.encode(payload, config.secretKey);
-    }
+
     function ensureAuthenticated(req,res,next){
         if (!req.headers.authorization) {
             return res.status(401).send({ message: 'Please make sure your request has an Authorization header' });
@@ -58,6 +52,7 @@ module.exports = function(app, express){
         req.user = payload.sub;
         next();
     }
+
     /*create user account by Andri*/
     api.post('/sendReq', function(req,res){
         var user = new User({
@@ -65,7 +60,7 @@ module.exports = function(app, express){
             email       : req.body.email,
 	        username    : req.body.username,
 	        password    : req.body.password,
-	        token       : createJWT(user),
+	        token       : helper.createJWT(user),
 	        activated   : false
         });
 
@@ -92,14 +87,14 @@ module.exports = function(app, express){
 		});
     });
 
-    /*user getuser by id create by Andri*/
-    api.get('/getuser/:id', function(req, res) {
-        User.findOne({'_id' : req.params.id}, function(err, user) {
+    /*user getuser by token create by Andri*/
+    api.get('/getuser/:token', function(req, res) {
+        User.findOne({'token' : req.params.token}, function(err, user) {
             if(err) {
                 res.send(err);
-                return;
+            }else{
+                res.json(user);         
             }
-            res.json(user);
         });
     });
 
@@ -135,7 +130,7 @@ module.exports = function(app, express){
                 if (err) {
                     res.json({ message: err.message });
                 }
-                res.json({ token: createJWT(result), message:"Successfully Register." });
+                res.json({ token: helper.createJWT(result), message:"Successfully Register." });
             });
         });
     });
@@ -149,25 +144,31 @@ module.exports = function(app, express){
      */
     api.post('/auth/login', function(req, res) {
 
-        /*User.findOne({
-            username: req.body.username
-        }).select('username password').exec(function(err, user) {
+        User.findOne({ 
+            'email' : req.body.email
+        }).select('username password activated token').exec(function(err, user) {
             if(err) throw err;
             if(!user) {
-                res.send({ message: "User doesn't exist"});
+                res.send({ message: "User doesnt exist"});
             } else if(user){ 
                 var validPassword = user.comparePassword(req.body.password);
                 if(!validPassword) {
                     res.send({ message: "Invalid Password"});
                 } else {
-                    res.json({
-                        success: true,
-                        message: "Successfuly login!"
-                    });
+                    if(user.activated === false){
+                        res.send({ message: "User Doesnt Active"});
+                    }else{
+                        res.json({
+                            success: true,
+                            token: user.token,
+                            message: "Successfuly login!",
+                        });
+                    }
                 }
             }
-        });*/
-        User.findOne({ email:req.body.email},'+password',function(err,user){
+        });
+
+/*        User.findOne({ email:req.body.email},'+password',function(err,user){
             //if(err) throw err;
             if(!user){
                 return res.send({ message: 'Invalid email and/or password' })
@@ -179,11 +180,11 @@ module.exports = function(app, express){
                 res.send({
                     success:true,
                     message: "Successfully Login!",
-                    token : createJWT(user)
+                    token : helper.createJWT(user)
                 });
             });
 
-        });
+        });*/
     });
 
     /*getAll User by Andri*/

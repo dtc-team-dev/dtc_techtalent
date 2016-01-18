@@ -2,7 +2,7 @@ var express = require('express'),
     bodyParser = require('body-parser'),
     morgan = require('morgan'),
     mongoose = require('mongoose'),
-    config = require('./config/config'),
+    config = require('./config/main'),
     http = require('http'),
     path = require('path'),
     //methodOverride = require('method-override'),
@@ -114,6 +114,7 @@ function onListening() {
         : 'port ' + addr.port;
     console.log('Terhubung dengan port ' + bind);
 }
+
 /*Connected to Database*/
 mongoose.connect(config.database, function (err) {
     if (err) {

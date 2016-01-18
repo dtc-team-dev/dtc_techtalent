@@ -17,6 +17,33 @@ app
 		})
 	};
 
+	cekFactory.remember = function(name, values) {
+        var cookie = name + '=';
+
+        cookie += values + ';';
+
+        var date = new Date();
+        date.setDate(date.getDate() + 365);
+
+        cookie += 'expires=' + date.toString() + ';';
+
+        document.cookie = cookie;
+    }
+
+    cekFactory.forget = function(name) {
+        var cookie = name + '=;';
+        cookie += 'expires=' + (new Date()).toString() + ';';
+
+        document.cookie = cookie;
+    }
+
+    cekFactory.getEmailCookie = function(cookiename){
+    	// Get name followed by anything except a semicolon
+		var cookiestring=RegExp(""+cookiename+"[^;]+").exec(document.cookie);
+		// Return everything after the equal sign
+		return unescape(!!cookiestring ? cookiestring.toString().replace(/^[^=]+./,"") : "");
+	}
+
     /*function login untuk menghubungkan ke userApi*/
     cekFactory.signup = function(email, password) {
         return $http.post('api/auth/signup', {
@@ -46,7 +73,7 @@ app
 	/*function untuk mendapatkan akun ketika login*/
 	cekFactory.getUser = function() {
 		if(CekToken.getToken()){
-			return $http.get('/api/user/getuser/'+CekToken.getToken());
+			return $http.get('/api/getuser/'+CekToken.getToken());
 		}else{
 			return $q.reject({ message: "User has no token"});
 		}
@@ -79,25 +106,4 @@ app
 
 });
 
-
-/*.factory('AuthInterceptor', function($q, $location, CekToken) {
-
-	var interceptorFactory = {};
-
-
-	interceptorFactory.request = function(config) {
-
-		var token = CekToken.getToken();
-
-		if(token) {
-
-			config.headers['x-access-token'] = token;
-		}
-		return config;
-	};
-
-	
-	return interceptorFactory;
-});
-*/
 

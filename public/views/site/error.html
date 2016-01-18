@@ -1,6 +1,17 @@
-<div class="row">
-    <div class="col-md-12 text-center">
-        <h1 class="no-margin">Maaf, terjadi kesalahan</h1>
-        <span class="random-text"> Silahkan hubungi administrator anda</span>
-    </div>
-</div>
+<body onload="redirect()">
+
+<script>
+	
+	function redirect (argument) {
+		var base = window.location.hostname;
+		var url = window.location.pathname;
+		var hash = url.substring(0, 3);
+
+		if ( hash !== "/#/") {
+			var go = "/#" + url;
+			console.log(go);
+			window.location.href = go;
+		}
+
+	}
+</script>
