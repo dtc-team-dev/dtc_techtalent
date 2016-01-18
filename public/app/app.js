@@ -4,6 +4,11 @@ var app = angular.module("techTalentAsia", [
 ]);
 
 app.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
+	
+	if(window.history && window.history.pushState){
+		$locationProvider.html5Mode(true);
+	}
+	
 	$routeProvider
 		.when('/', {
 			controller: 'LoginController',
@@ -18,6 +23,4 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
 		.otherwise({
 			redirectTo: '/'
 		});
-
-	$locationProvider.html5Mode(true);
 }]);
