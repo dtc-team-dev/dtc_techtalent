@@ -15,7 +15,7 @@
 							<h4 class="modal-title" id="modalRegisterLabel"><strong>Sign Up for Free</strong></h4>
 							<span class="font-gray">Choose on of the following up sign up methods</span>
 							<div class="login-container">
-								<a href="">
+								<a ng-click="login.authenticate('linkedin')" href="">
 									<div class="login-linkedin">
 										Sign in with Linkedin
 									</div>
@@ -23,7 +23,7 @@
 							</div>
 
 							<div class="login-container">
-								<a href="">
+								<a ng-click="login.authenticate('google')" href="">
 									<div class="login-google">
 										Sign in with Google
 									</div>

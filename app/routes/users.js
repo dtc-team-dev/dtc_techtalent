@@ -31,10 +31,6 @@ module.exports = function(app, express){
     function ensureAuthenticated(req,res,next){
         if (!req.headers.authorization) {
             return res.status(401).send({ message: 'Please make sure your request has an Authorization header' });
-            //res.writeHead(401),{'WWW-Authenticate' : 'Basic Realm="Tech Talent App"','content-type':'text/plain'};
-            //res.send({ message: 'Please make sure your request has an Authorization header' });
-            //res.end();
-            //return;
         }
         var token = req.headers.authorization.split(' ')[1];
 
@@ -208,9 +204,9 @@ module.exports = function(app, express){
         };
 
         // Step 1. Exchange authorization code for access token.
-        request.post(accessTokenUrl, { form: params, json: true }, function(err, response, body) {
-            if (response.statusCode !== 200) {
-                return res.status(response.statusCode).send({ message: body.error_description });
+        req.post(accessTokenUrl, { form: params, json: true }, function(err, res, body) {
+            if (res.statusCode !== 200) {
+                return res.status(res.statusCode).send({ message: body.error_description });
             }
             var params = {
                 oauth2_access_token: body.access_token,
@@ -218,7 +214,7 @@ module.exports = function(app, express){
             };
 
             // Step 2. Retrieve profile information about the current user.
-            request.get({ url: peopleApiUrl, qs: params, json: true }, function(err, response, profile) {
+            req.get({ url: peopleApiUrl, qs: params, json: true }, function(err, res, profile) {
 
                 // Step 3a. Link user accounts.
                 if (req.headers.authorization) {
@@ -278,12 +274,12 @@ module.exports = function(app, express){
         };
 
         // Step 1. Exchange authorization code for access token.
-        request.post(accessTokenUrl, { json: true, form: params }, function(err, response, token) {
+        req.post(accessTokenUrl, { json: true, form: params }, function(err, res, token) {
             var accessToken = token.access_token;
             var headers = { Authorization: 'Bearer ' + accessToken };
 
             // Step 2. Retrieve profile information about the current user.
-            request.get({ url: peopleApiUrl, headers: headers, json: true }, function(err, response, profile) {
+            req.get({ url: peopleApiUrl, headers: headers, json: true }, function(err, res, profile) {
                 if (profile.error) {
                     return res.status(500).send({message: profile.error.message});
                 }

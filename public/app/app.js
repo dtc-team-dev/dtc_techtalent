@@ -9,30 +9,16 @@ app.config(['$routeProvider', '$locationProvider', '$authProvider', function($ro
         .when('/', {
             templateUrl: 'views/site/main.html'
         })
-        .when('/api/auth/login', {
-            controller: 'AuthController',
-            templateUrl: 'views/site/login.html',
-            clientId: '75ryg9srtbrqr1'
-        })
         .when('/login', {
             controller: 'LoginController',
             templateUrl: 'views/site/login.html',
-            clientId: '75ryg9srtbrqr1',
             controllerAs: 'login'
-        })
-        .when('/api/auth/signup', {
-            controller: 'AuthController',
-            templateUrl: 'views/site/signup.html'
         })
         .otherwise({
             redirectTo: '/'
         });
 
     $locationProvider.html5Mode(true);
-
-    $authProvider.facebook({
-        clientId: '1690330761186585'
-    });
 
     $authProvider.google({
         clientId: '573705101198-n8c90t5cueecj4pc5d893gbatqbcl5al.apps.googleusercontent.com'
@@ -41,6 +27,10 @@ app.config(['$routeProvider', '$locationProvider', '$authProvider', function($ro
     $authProvider.linkedin({
         clientId: '75ryg9srtbrqr1'
     });
+
+    /*$authProvider.facebook({
+     clientId: '1690330761186585'
+     });*/
 
     /*$authProvider.github({
         clientId: 'GitHub Client ID'
