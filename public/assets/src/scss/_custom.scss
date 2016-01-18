@@ -36,7 +36,7 @@
 	height: 600px;
 	margin: auto;
 	position: absolute;
-	top: -50px;
+	top: 0px;
 	bottom: 0;
 	left: 0;
 	right: 0;
@@ -69,7 +69,6 @@
 		.nav {
 			li {
 				a {
-					font-weight: bold;
 					color: #999;
 					@include transition(.3s);
 					&:hover, &:focus {
@@ -97,7 +96,8 @@
 		    border-radius: 3px;
 		    font-weight: normal;
 		    margin-top: 9px;
-		    &:hover {
+		    margin-right: 15px;
+		    &:hover, &:focus {
 				background: $light-orange!important;
 				color: #fff !important;
 				box-shadow: 0px 10px 35px #eee;
