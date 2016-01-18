@@ -11,6 +11,7 @@
 				<ul class="nav navbar-nav navbar-right">
 					<li ng-if="!login.loggedIn"><a href="/login">Log In</a></li>
 					<li ng-if="login.loggedIn"><a href="#" ng-click="login.doLogout()">{{ login.user.username }}Log Out</a></li>
+					<li><a href="/#/login">Log In</a></li>
 				</ul>
 
 			</div><!-- /.navbar-collapse -->
