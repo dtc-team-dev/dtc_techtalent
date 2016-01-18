@@ -101,3 +101,4 @@ crashlytics.properties
 crashlytics-build.properties
 
 public/assets/css/app.css
+public/assets/js/vendor.js
