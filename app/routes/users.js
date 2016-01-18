@@ -25,6 +25,7 @@ module.exports = function(app, express){
             return unauthorized(res);
         }
     };*/
+
     function createJWT(req,res,next){
         var payload = {
             sub: User._id,

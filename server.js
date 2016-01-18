@@ -13,7 +13,6 @@ var routes = require('./app/routes/index')(app, express);
 
 /*app.set('views', path.join(__dirname, '/public/views'));
 app.set('view engine', 'html');*/
-
 app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
