@@ -9406,41 +9406,16 @@ blockquote p {
 .form-signup {
   max-width: 450px;
   margin: auto;
-  margin-top: 320px;
-  font-size: 16px;
-  z-index: 9;
-  position: relative; }
+  margin-top: 250px;
+  font-size: 16px; }
   @media (max-width: 767px) {
     .form-signup {
       margin-top: 35vh; } }
 
-.signup {
-  width: 215px;
-  text-align: center;
-  margin: auto;
-  display: block;
-  position: relative;
-  z-index: 9;
-  background: #FF8500;
-  color: #fff;
-  border: none;
-  padding: 10px;
-  border-radius: 3px;
-  font-weight: bold;
-  letter-spacing: 1px;
-  -webkit-transition: all 0.3s;
-  -o-transition: all 0.3s;
-  transition: all 0.3s; }
-  .signup:hover {
-    background: #FFA500;
-    color: #fff !important;
-    box-shadow: 0px 10px 35px #eee; }
-
 .linkedin-login {
   text-align: center;
-  padding-bottom: 20px;
-  position: relative;
-  z-index: 9; }
+  margin-top: 170px;
+  padding-bottom: 20px; }
   .linkedin-login img {
     height: 40px;
     margin-bottom: 10px; }
@@ -9494,20 +9469,6 @@ blockquote p {
       display: inherit;
       margin-top: 5px;
       margin-bottom: 25px; }
-
-.page-loader {
-  width: 100%;
-  height: 100vh;
-  background: #fff;
-  position: absolute;
-  z-index: 9999; }
-  .page-loader img {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: auto; }
 
 #modalRegister .modal-header {
   padding: 40px 40px 15px;
