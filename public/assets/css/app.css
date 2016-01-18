@@ -10187,6 +10187,7 @@ blockquote p {
       margin-top: 35vh; } }
 
 .signup {
+  cursor: pointer;
   width: 215px;
   text-align: center;
   margin: auto;
@@ -10197,6 +10198,7 @@ blockquote p {
   color: #fff;
   border: none;
   padding: 10px;
+  margin-bottom: 20px;
   border-radius: 3px;
   font-weight: bold;
   letter-spacing: 1px;
@@ -10286,6 +10288,48 @@ blockquote p {
   border-bottom: none; }
   #modalRegister .modal-header .modal-title {
     font-size: 28px; }
+  #modalRegister .modal-header span {
+    display: block; }
+  #modalRegister .modal-header .login-container {
+    width: 175px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 12px;
+    cursor: pointer;
+    display: inline-block;
+    margin-top: 10px;
+    margin-right: 10px !important; }
+    #modalRegister .modal-header .login-container:hover {
+      box-shadow: 0px 10px 35px #eee; }
+    #modalRegister .modal-header .login-container a {
+      color: #fff; }
+    #modalRegister .modal-header .login-container .login-linkedin {
+      background: #066093;
+      text-align: center;
+      border-radius: 3px; }
+      #modalRegister .modal-header .login-container .login-linkedin:before {
+        content: "\f0e1";
+        font-family: "FontAwesome";
+        font-size: 18px;
+        padding: 0px 10px;
+        float: left;
+        border-top-left-radius: 3px;
+        border-bottom-left-radius: 3px;
+        background: #0077B5; }
+    #modalRegister .modal-header .login-container .login-google {
+      background: #E00000;
+      text-align: center;
+      border-radius: 3px; }
+      #modalRegister .modal-header .login-container .login-google:before {
+        content: "\f0d5";
+        font-family: "FontAwesome";
+        font-size: 16px;
+        padding: 0px 10px;
+        float: left;
+        border-top-left-radius: 3px;
+        border-bottom-left-radius: 3px;
+        background: red;
+        font-weight: bold; }
   #modalRegister .modal-header .linkedin-login img {
     height: 30px;
     float: left;
