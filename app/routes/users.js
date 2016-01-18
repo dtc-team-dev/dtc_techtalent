@@ -130,7 +130,7 @@ module.exports = function(app, express){
                 if (err) {
                     res.json({ message: err.message });
                 }
-                res.json({ token: createJWT(result), message:"Successfully Register." });
+                res.json({ token: helper.createJWT(result), message:"Successfully Register." });
             });
         });
     });

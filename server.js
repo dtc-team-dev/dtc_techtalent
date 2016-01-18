@@ -10,7 +10,6 @@ var express = require('express'),
 
 var api = require('./app/routes/users')(app, express);
 var routes = require('./app/routes/index')(app, express);
-var apiuser = require('./routes/userApi')(app, express);
 
 /*app.set('views', path.join(__dirname, '/public/views'));
 app.set('view engine', 'html');*/
@@ -26,7 +25,6 @@ app.use(express.static(__dirname + '/public/assets/img'));*/
 
 app.use('/api', api);
 app.use('/', routes);
-app.use('/user',apiuser);
 
 /**
  * Get port from config.
