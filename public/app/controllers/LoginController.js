@@ -35,13 +35,11 @@ app
 				}
 			});
 	};
-
 	/*Function Klik untuk Logout*/
 	vm.doLogout = function() {
 		Login.logout();
 		$window.location.reload();
 	};
-
 
 	$scope.authenticate = function(provider) {
 		$auth.authenticate(provider);
