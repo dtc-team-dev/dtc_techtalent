@@ -11,10 +11,10 @@
 			</div>
 		</form> -->
 
-		<div class="m-t-430">
+		<div class="m-t-430" ng-controller="LoginController as login">
 			
-			<div class="col-md-6">
-				<a href="#/signup" class="signup pull-right" data-toggle="modal" data-target="#modalRegister">Sign Up</a>
+			<div class="col-md-6" ng-if="!login.loggedIn">
+				<a class="signup pull-right" data-toggle="modal" data-target="#modalRegister">Sign Up</a>
 			</div>
 
 			<!-- Modal -->
@@ -34,13 +34,19 @@
 						<div class="modal-body">
 							<div class="row no-margin">
 								<div class="col-md-12 col-centered col-sm-12 no-padding">
-									<form action="" class="form-login form-custom">
+									<form method="post" name="signup" class="form-login form-custom" ng-controller="UserController as user">
 										<span class="font-gray">Or sign up using your email address</span>
-										<input type="text" class="form-control" placeholder="User name">
-										<input type="email" class="form-control" placeholder="Email">
-										<input type="password" class="form-control" placeholder="Password">
-										<p class="text-left font-gray">By pressing a create button, it means you have read and agree with the Terms and Privacy Policy of Tech Talent Asia.</p>
-										<button type="button" class="btn btn-login">Create Account</button>
+										<input type="text" class="form-control" placeholder="User name" ng-pattern="username" name="username" ng-model="user.createData.username">
+								        <span class="error" ng-show="signup.username.$error.pattern">
+							            invalid username!
+        								</span>										
+										<input type="email" class="form-control" ng-pattern="email" placeholder="Email" name="email" ng-model="user.createData.email">
+								        <span class="error" ng-show="signup.email.$error.pattern">
+							            invalid email!
+        								</span>
+										<input type="password" class="form-control" placeholder="Password" name="password" ng-model="user.createData.password">
+										<p class="text-left font-gray">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae blanditiis est consequuntur omnis optio.</p>
+										<button type="button" class="btn btn-login" ng-click="user.CreateUser()">Create Account</button>
 									</form> 
 							</div> 
 								</div>
@@ -49,7 +55,7 @@
 				</div>
 			</div>
 
-			<div class="col-md-6">
+			<div class="col-md-6" ng-if="!login.loggedIn">
 				<div class="linkedin-login pull-left">
 					<a href=""><img src="assets/img/Sign-In-Large---Active.png" alt="Sign In with Linkedin"></a>
 				</div>

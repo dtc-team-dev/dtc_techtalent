@@ -6,9 +6,7 @@ var app = angular.module("techTalentAsia", [
 app.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
 	$routeProvider
 		.when('/', {
-			controller: 'LoginController',
 			templateUrl: 'views/site/main.html',
-			controllerAs: 'login'
 		})
 		.when('/login', {
 			controller: 'LoginController',

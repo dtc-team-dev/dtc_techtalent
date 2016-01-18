@@ -1,9 +1,36 @@
 var User = require('../models/userModel'),
-    config = require('../config/main');
+    config = require('../config/main'),
+    nodemailer = require('nodemailer');
 
 module.exports = function(app, express){
 
     var api = express.Router();
+
+    api.get('/email', function(req,res){
+		// create reusable transporter object using the default SMTP transport
+		var transporter = nodemailer.createTransport('smtps://beta.eproc%40gmail.com:d0c0t3lmks@smtp.gmail.com');
+
+		module.exports = {
+			kirim : 'kirim'
+		}
+		// setup e-mail data with unicode symbols
+		var mailOptions = {
+		    from: 'Andri', // sender address
+		    to: 'andri_dwiutomo@ymail.com', // list of receivers
+		    subject: 'Hello', // Subject line
+		    text: 'Hello world', // plaintext body
+		    html: {path : './routes/mail.html'} //'<b>Hello world</b>' // html body
+		};
+
+		// send mail with defined transport object
+		transporter.sendMail(mailOptions, function(error, info){
+		    if(error){
+		        return console.log(error);
+		    }else{
+			    console.log('Message sent: ' + info.response);	    	
+		    }
+		});
+	});
 
     /*create user account by Andri*/
     api.post('/sendReq', function(req,res){
@@ -50,13 +77,13 @@ module.exports = function(app, express){
     });
 
     /*user getuser by id create by Andri*/
-    api.get('/getuser/:id', function(req, res) {
-        User.findOne({'_id' : req.params.id}, function(err, user) {
+    api.get('/getuser/:token', function(req, res) {
+        User.findOne({'token' : req.params.token}, function(err, user) {
             if(err) {
                 res.send(err);
-                return;
+            }else{
+	            res.json(user);        	
             }
-            res.json(user);
         });
     });
 
@@ -109,10 +136,6 @@ module.exports = function(app, express){
             res.json(users);
         });
     });
-
-	api.get('/me', function(req, res) {
-		res.send(req.decoded);
-	}); 
 
     return api
 }

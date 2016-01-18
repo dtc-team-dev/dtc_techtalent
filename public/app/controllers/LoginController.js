@@ -1,18 +1,15 @@
 app
 
-.controller('LoginController', function($rootScope, $location, $window, Login) {
+.controller('LoginController', function($location, $window, Login) {
 
 	var vm = this;
 
 	vm.loggedIn = Login.isLoggedIn();
 
-	$rootScope.$on('$routeChangeStart', function() {
-		vm.loggedIn = Login.isLoggedIn();
 		Login.getUser()
 			.then(function(data) {
 				vm.user = data.data;
 			});
-	});
 
 	/*Function Klik untuk Login*/
 	vm.doLogin = function() {
@@ -21,10 +18,8 @@ app
 
 		vm.error = '';
 		
-
 		Login.login(vm.loginData.email, vm.loginData.password)
 			.success(function(data) {
-
 				vm.processing = false;
 
 				Login.getUser()
