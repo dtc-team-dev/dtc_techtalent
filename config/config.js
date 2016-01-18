@@ -6,4 +6,5 @@ module.exports = {
     // OAuth 2.0
     "LINKEDIN_SECRET": process.env.LINKEDIN_SECRET || 'Kd61E49RuRr05bTL',
     "LINKEDIN_CID": process.env.LINKEDIN_CID || '75ryg9srtbrqr1'
+
 };
