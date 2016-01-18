@@ -102,6 +102,11 @@
 				color: #fff !important;
 				box-shadow: 0px 10px 35px #eee;
 			}
+			&:focus{
+				background: $light-orange!important;
+				color: #fff !important;
+				box-shadow: 0px 10px 35px #eee;
+			}
 		}
 		@media (max-width: 767px) {
 			float: right;
