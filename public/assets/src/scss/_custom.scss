@@ -16,6 +16,21 @@
 	z-index: 0;
 }
 
+.page-loader {
+	width: 100%;
+	height: 100vh;
+	background: #fff;
+	position: relative;
+	img {
+		position: absolute;
+		margin: auto;
+		top: 0;
+		bottom: 0;
+		right: 0;
+		left: 0;
+	}
+}
+
 .top-absolute {
 	width: 800px;
 	height: 600px;
@@ -89,6 +104,30 @@
 	font-size: 16px;
 	@media (max-width: 767px) {
 		margin-top: 35vh;
+	}
+}
+
+.signup {
+	cursor: pointer;
+	width: 215px;
+	text-align: center;
+	margin: auto;
+	display: block;
+	position: relative;
+	z-index: 9;
+	background: $orange;
+	color: #fff;
+	border: none;
+	padding: 10px;
+	margin-bottom: 20px;
+	border-radius: 3px;
+	font-weight: bold;
+	letter-spacing: 1px;
+	@include transition(.3s);
+	&:hover {
+		background: $light-orange;
+		color: #fff !important;
+		box-shadow: 0px 10px 35px #eee;
 	}
 }
 
@@ -173,6 +212,56 @@
 		border-bottom: none;
 		.modal-title{
 			font-size: 28px;
+		}
+		span{
+			display: block;
+		}
+		.login-container{
+			&:hover{
+				box-shadow: 0px 10px 35px #eee;
+			}
+			a{
+				color: $white;
+			}
+			width: 175px;
+			height: 30px;
+			line-height: 30px;
+			font-size: 12px;
+			cursor: pointer;
+			display: inline-block;
+			margin-top: 10px;
+			margin-right: 10px!important;
+			.login-linkedin{
+				background: #066093;
+				text-align: center;
+				border-radius: 3px;
+				&:before{
+					content: "\f0e1";
+					font-family: "FontAwesome";
+					font-size: 18px;
+					padding: 0px 10px;
+					float: left;
+					border-top-left-radius: 3px;
+					border-bottom-left-radius: 3px;
+					background: #0077B5;
+				}
+			}
+			.login-google{
+				background: #E00000;
+				text-align: center;
+				border-radius: 3px;
+				&:before{
+					content: "\f0d5";
+					font-family: "FontAwesome";
+					font-size: 16px;
+					padding: 0px 10px;
+					float: left;
+					border-top-left-radius: 3px;
+					border-bottom-left-radius: 3px;
+					background: red;
+					font-weight: bold;
+				}
+			}
 		}
 		.linkedin-login{
 			img{
