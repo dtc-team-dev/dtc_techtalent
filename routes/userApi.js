@@ -10,16 +10,13 @@ module.exports = function(app, express){
 		// create reusable transporter object using the default SMTP transport
 		var transporter = nodemailer.createTransport('smtps://beta.eproc%40gmail.com:d0c0t3lmks@smtp.gmail.com');
 
-		module.exports = {
-			kirim : 'kirim'
-		}
 		// setup e-mail data with unicode symbols
 		var mailOptions = {
-		    from: 'Andri', // sender address
-		    to: 'andri_dwiutomo@ymail.com', // list of receivers
+		    from: 'Tech Talent', // sender address
+		    to: 'rayyapari@gmail.com', // list of receivers
 		    subject: 'Hello', // Subject line
 		    text: 'Hello world', // plaintext body
-		    html: {path : './routes/mail.html'} //'<b>Hello world</b>' // html body
+		    html: {path : './public/views/emailTemplate/token.html'} //'<b>Hello world</b>' // html body
 		};
 
 		// send mail with defined transport object
@@ -46,10 +43,12 @@ module.exports = function(app, express){
             if(err){
                 res.send(err);
                 return;
+            }else{
+                res.json({ message : "Email Telah Terkirim" });
             }
 
-            res.json({ message : "Email Telah Terkirim" });
         });
+        
     });
 
     /*user update by Andri*/
@@ -76,7 +75,7 @@ module.exports = function(app, express){
 		});
     });
 
-    /*user getuser by id create by Andri*/
+    /*user getuser by token create by Andri*/
     api.get('/getuser/:token', function(req, res) {
         User.findOne({'token' : req.params.token}, function(err, user) {
             if(err) {

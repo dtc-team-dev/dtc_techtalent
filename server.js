@@ -17,7 +17,7 @@ app.use('/user',api);
 
 /*app.get('*', function(req,res){
     res.sendFile(__dirname + '/public');
-});
+});*/
 
 /*Listening Port to Run Node JS*/
 app.listen(config.port, function(err){
