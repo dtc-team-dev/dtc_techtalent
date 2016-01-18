@@ -1,6 +1,4 @@
-app
-
-.controller('LoginController', function($location, $window, Login) {
+app.controller('LoginController', function($rootScope, $location, $window, Login) {
 
 	var vm = this;
 
@@ -34,13 +32,15 @@ app
 					alert(vm.error);
 				}
 			});
-	}
-
+	};
 	/*Function Klik untuk Logout*/
 	vm.doLogout = function() {
 		Login.logout();
 		$window.location.reload();
-	}
+	};
 
+	vm.authenticate = function(provider) {
+		$auth.authenticate(provider);
+	};
 
 });
