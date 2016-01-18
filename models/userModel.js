@@ -3,6 +3,7 @@ var mongoose    = require('mongoose'),
     config      = require('../config/main'),
     libFunct    = require('../lib/function-model'),
     bcrypt      = require('bcrypt-nodejs'),
+    nodemailer = require('nodemailer'),
     userSchema = new Schema({
         email       : {type : String, required : true, index : {unique : true}},
         username    : {type : String, required : true},
@@ -10,6 +11,8 @@ var mongoose    = require('mongoose'),
         token       : {type : String, select : false},
         activated   : {type : Boolean}
     });
+
+
 
 userSchema.pre('save', function(next){
     var user = this;
