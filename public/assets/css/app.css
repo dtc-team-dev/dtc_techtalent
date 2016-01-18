@@ -10330,6 +10330,17 @@ blockquote p {
       .navbar-custom .nav li.active a:hover, .navbar-custom .nav li.active a:focus {
         background: #FF8500;
         color: #fff; }
+  .navbar-right .navbar-signup {
+    background: #FF8500;
+    color: #fff !important;
+    padding: 5px 15px;
+    border-radius: 3px;
+    font-weight: normal;
+    margin-top: 9px; }
+    .navbar-right .navbar-signup:hover {
+      background: #FFA500 !important;
+      color: #fff !important;
+      box-shadow: 0px 10px 35px #eee; }
   @media (max-width: 767px) {
     .navbar-right {
       float: right;
@@ -10375,6 +10386,9 @@ blockquote p {
   .linkedin-login img {
     height: 40px;
     margin-bottom: 10px; }
+
+.copyright-techtalent {
+  padding-top: 35px; }
 
 .login-form {
   position: relative;

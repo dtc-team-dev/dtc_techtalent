@@ -90,6 +90,19 @@
 		}
 	}
 	&-right {
+		.navbar-signup{
+			background: $orange;
+		    color: $white!important;
+		    padding: 5px 15px;
+		    border-radius: 3px;
+		    font-weight: normal;
+		    margin-top: 9px;
+		    &:hover {
+				background: $light-orange!important;
+				color: #fff !important;
+				box-shadow: 0px 10px 35px #eee;
+			}
+		}
 		@media (max-width: 767px) {
 			float: right;
 			margin-top: -45px;
@@ -139,6 +152,10 @@
 		height: 40px;
 		margin-bottom: 10px;
 	}
+}
+
+.copyright-techtalent{
+	padding-top: 35px;
 }
 
 .login-form{
