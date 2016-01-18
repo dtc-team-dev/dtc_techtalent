@@ -7,7 +7,7 @@ app
 
 	/*function login untuk menghubungkan ke userApi*/
 	cekFactory.login = function(email, password) {
-		return $http.post('/user/login', {
+		return $http.post('api/auth/login', {
 			email: email,
 			password: password
 		})
@@ -15,30 +15,43 @@ app
 			CekToken.setToken(data.token);
 			return data;
 		})
-	}
+	};
+
+    /*function login untuk menghubungkan ke userApi*/
+    cekFactory.signup = function(email, password) {
+        return $http.post('api/auth/signup', {
+            email: email,
+            password: password
+        })
+            .success(function(data) {
+                CekToken.setToken(data.token);
+                return data;
+            })
+    };
 
 	/*function Logout untuk setting token*/
 	cekFactory.logout = function() {
 		CekToken.setToken();
-	}
+	};
 
 	/*function mengecek ketika user telah login*/
 	cekFactory.isLoggedIn = function() {
-		if(CekToken.getToken())
+		if(CekToken.getToken()){
 			return true;
-		else
-			return false;
-	}
+		} else{
+            return false;
+        }
+	};
 
 	/*function untuk mendapatkan akun ketika login*/
 	cekFactory.getUser = function() {
 		if(CekToken.getToken()){
-			return $http.get('/user/getuser/'+CekToken.getToken());
+			return $http.get('/api/user/getuser/'+CekToken.getToken());
 		}else{
 			return $q.reject({ message: "User has no token"});
 		}
 
-	}
+	};
 
 	return cekFactory;
 
@@ -52,7 +65,7 @@ app
 	/*function untuk mengambil nilai token yang telah di simpan di localStorage*/
 	cekTokenFactory.getToken = function() {
 		return $window.localStorage.getItem('token');
-	}
+	};
 
 	/*function untuk setting nilai token pada localstorage*/
 	cekTokenFactory.setToken = function(token) {
@@ -60,11 +73,11 @@ app
 			$window.localStorage.setItem('token', token);
 		else
 			$window.localStorage.removeItem('token');
-	}
+	};
 
 	return cekTokenFactory;
 
-})
+});
 
 
 /*.factory('AuthInterceptor', function($q, $location, CekToken) {

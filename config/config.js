@@ -1,5 +1,6 @@
 module.exports = {
-    "database"  : "mongodb://hansenmakangiras:BlackID85@127.0.0.1:27017/touch_talent",
+    /*"database"  : "mongodb://hansenmakangiras:BlackID85@127.0.0.1:27017/touch_talent",*/
+    "database"	: "mongodb://tech_talent:DTC3l3b3s@ds047365.mongolab.com:47365/tech_talent",
     "port"      : process.env.PORT || 3000,
     "secretKey" : "DTCSecretKey",
 
