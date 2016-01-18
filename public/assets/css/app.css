@@ -10185,8 +10185,8 @@ blockquote p {
 /*============================
 =            Gifa            =
 ============================*/
-.m-t-430 {
-  margin-top: 430px; }
+.m-t-500 {
+  margin-top: 500px; }
 
 .form-control {
   box-shadow: none !important; }
@@ -10288,7 +10288,7 @@ blockquote p {
   height: 600px;
   margin: auto;
   position: absolute;
-  top: -50px;
+  top: 0px;
   bottom: 0;
   left: 0;
   right: 0;
@@ -10317,7 +10317,6 @@ blockquote p {
     background: transparent;
     padding-top: 20px; }
     .navbar-custom .nav li a {
-      font-weight: bold;
       color: #999;
       -webkit-transition: all 0.3s;
       -o-transition: all 0.3s;
@@ -10330,6 +10329,22 @@ blockquote p {
       .navbar-custom .nav li.active a:hover, .navbar-custom .nav li.active a:focus {
         background: #FF8500;
         color: #fff; }
+  .navbar-right .navbar-signup {
+    background: #FF8500;
+    color: #fff !important;
+    padding: 5px 15px;
+    border-radius: 3px;
+    font-weight: normal;
+    margin-top: 9px;
+    margin-right: 15px; }
+    .navbar-right .navbar-signup:hover, .navbar-right .navbar-signup:focus {
+      background: #FFA500 !important;
+      color: #fff !important;
+      box-shadow: 0px 10px 35px #eee; }
+    .navbar-right .navbar-signup:focus {
+      background: #FFA500 !important;
+      color: #fff !important;
+      box-shadow: 0px 10px 35px #eee; }
   @media (max-width: 767px) {
     .navbar-right {
       float: right;
@@ -10375,6 +10390,9 @@ blockquote p {
   .linkedin-login img {
     height: 40px;
     margin-bottom: 10px; }
+
+.copyright-techtalent {
+  padding-top: 35px; }
 
 .login-form {
   position: relative;
