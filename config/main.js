@@ -9,5 +9,7 @@ module.exports = {
     "LINKEDIN_SECRET": process.env.LINKEDIN_SECRET || 'Kd61E49RuRr05bTL',
     "LINKEDIN_CID": process.env.LINKEDIN_CID || '75ryg9srtbrqr1',
     "GOOGLE_SECRET": process.env.GOOGLE_SECRET || 'jwpPSyC-r3T-OtV7ohpDfUPY',
-    "GOOGLE_CID": process.env.GOOGLE_CID || '573705101198-n8c90t5cueecj4pc5d893gbatqbcl5al.apps.googleusercontent.com'
+    "GOOGLE_CID": process.env.GOOGLE_CID || '573705101198-n8c90t5cueecj4pc5d893gbatqbcl5al.apps.googleusercontent.com',
+    "FACEBOOK_SECRET": process.env.FACEBOOK_SECRET || '8c276916b67298e83eec9c66d2fe994e',
+    "FACEBOOK_CID": process.env.FACEBOOK_CID || '1690330761186585'
 };
