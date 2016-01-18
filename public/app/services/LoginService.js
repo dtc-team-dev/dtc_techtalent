@@ -25,17 +25,18 @@ app
 	/*function mengecek ketika user telah login*/
 	cekFactory.isLoggedIn = function() {
 		if(CekToken.getToken())
-				return true;
+			return true;
 		else
 			return false;
 	}
 
 	/*function untuk mendapatkan akun ketika login*/
 	cekFactory.getUser = function() {
-		if(CekToken.getToken())
-			return $http.get('/user/me');
-		else
+		if(CekToken.getToken()){
+			return $http.get('/user/getuser/'+CekToken.getToken());
+		}else{
 			return $q.reject({ message: "User has no token"});
+		}
 
 	}
 
@@ -66,14 +67,14 @@ app
 })
 
 
-/*.factory('AuthInterceptor', function($q, $location, AuthToken) {
+/*.factory('AuthInterceptor', function($q, $location, CekToken) {
 
 	var interceptorFactory = {};
 
 
 	interceptorFactory.request = function(config) {
 
-		var token = AuthToken.getToken();
+		var token = CekToken.getToken();
 
 		if(token) {
 

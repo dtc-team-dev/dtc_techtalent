@@ -11,9 +11,7 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
 	
 	$routeProvider
 		.when('/', {
-			controller: 'LoginController',
 			templateUrl: 'views/site/main.html',
-			controllerAs: 'login'
 		})
 		.when('/login', {
 			controller: 'LoginController',
