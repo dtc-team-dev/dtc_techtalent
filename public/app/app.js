@@ -21,11 +21,15 @@ app.config(['$routeProvider', '$locationProvider', '$authProvider', function($ro
     $locationProvider.html5Mode(true);
 
     $authProvider.google({
-        clientId: '573705101198-n8c90t5cueecj4pc5d893gbatqbcl5al.apps.googleusercontent.com'
+        clientId: '573705101198-n8c90t5cueecj4pc5d893gbatqbcl5al.apps.googleusercontent.com',
+        url: 'api/auth/google',
+        redirectUri: window.location.origin
     });
 
     $authProvider.linkedin({
-        clientId: '75ryg9srtbrqr1'
+        clientId: '75ryg9srtbrqr1',
+        url: 'api/auth/linkedin',
+        redirectUri: window.location.origin
     });
 
     /*$authProvider.facebook({

@@ -230,7 +230,7 @@ module.exports = function(app, express){
                             }
                             user.linkedin = profile.id;
                             user.picture = user.picture || profile.pictureUrl;
-                            user.displayName = user.displayName || profile.firstName + ' ' + profile.lastName;
+                            user.displayname = user.displayname || profile.firstName + ' ' + profile.lastName;
                             user.save(function() {
                                 var token = helper.createJWT(user);
                                 res.send({ token: token });
@@ -246,7 +246,7 @@ module.exports = function(app, express){
                         var user = new User();
                         user.linkedin = profile.id;
                         user.picture = profile.pictureUrl;
-                        user.displayName = profile.firstName + ' ' + profile.lastName;
+                        user.displayname = profile.firstName + ' ' + profile.lastName;
                         user.save(function() {
                             var token = helper.createJWT(user);
                             res.send({ token: token });
