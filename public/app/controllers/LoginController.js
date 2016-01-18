@@ -39,7 +39,7 @@ app.controller('LoginController', function($rootScope, $location, $window, Login
 		$window.location.reload();
 	};
 
-	$scope.authenticate = function(provider) {
+	vm.authenticate = function(provider) {
 		$auth.authenticate(provider);
 	};
 
@@ -52,7 +52,7 @@ app.controller('LoginController', function($rootScope, $location, $window, Login
 			var go = base + "/#" + url;
 			console.log(go);
 			// $window.location.href = go;
-		};
-	// });
+        }
+    // });
 
 });
