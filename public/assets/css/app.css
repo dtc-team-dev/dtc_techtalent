@@ -10126,6 +10126,19 @@ blockquote p {
   right: 0;
   z-index: 0; }
 
+.page-loader {
+  width: 100%;
+  height: 100vh;
+  background: #fff;
+  position: relative; }
+  .page-loader img {
+    position: absolute;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0; }
+
 .top-absolute {
   width: 800px;
   height: 600px;

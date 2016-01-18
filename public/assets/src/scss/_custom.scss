@@ -16,6 +16,21 @@
 	z-index: 0;
 }
 
+.page-loader {
+	width: 100%;
+	height: 100vh;
+	background: #fff;
+	position: relative;
+	img {
+		position: absolute;
+		margin: auto;
+		top: 0;
+		bottom: 0;
+		right: 0;
+		left: 0;
+	}
+}
+
 .top-absolute {
 	width: 800px;
 	height: 600px;
@@ -92,7 +107,6 @@
 	}
 }
 
-<<<<<<< HEAD
 .signup {
 	cursor: pointer;
 	width: 215px;
@@ -117,8 +131,6 @@
 	}
 }
 
-=======
->>>>>>> 6c8e7b1ee5589a73a31565858ab8a35935ed108c
 .linkedin-login {
 	text-align: center;
 	margin-top: 170px;
