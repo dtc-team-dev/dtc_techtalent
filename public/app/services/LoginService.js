@@ -7,7 +7,7 @@ app
 
 	/*function login untuk menghubungkan ke userApi*/
 	cekFactory.login = function(email, password) {
-		return $http.post('/user/login', {
+		return $http.post('/api/auth/login', {
 			email: email,
 			password: password
 		})
@@ -60,17 +60,13 @@ app
 	/*function untuk mendapatkan akun ketika login*/
 	cekFactory.getUser = function() {
 		if(CekToken.getToken()){
-			return $http.get('/user/getuser/'+CekToken.getToken());
+			return $http.get('/api/getuser/'+CekToken.getToken());
 		}else{
 			return $q.reject({ message: "User has no token"});
 		}
 
 	}
 
-	/*function get user by email*/
-	cekFactory.getUserByEmail = function(email) {
-		return $http.get('/user/getemail/'+email);
-	}
 
 	return cekFactory;
 

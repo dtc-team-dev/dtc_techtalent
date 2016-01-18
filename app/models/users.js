@@ -31,11 +31,11 @@ userSchema.pre('save', function(next){
 
 userSchema.methods.comparePassword = function(password,done){
     var user = this;
-    return bcrypt.compare(password,user.password, function(err,isMatch){
+/*    return bcrypt.compare(password,user.password, function(err,isMatch){
         done(err,isMatch);
-    });
+    });*/
 
-    /*return bcrypt.compareSync(password, user.password);*/
+    return bcrypt.compareSync(password, user.password);
 };
 
 module.exports = mongoose.model('user_account', userSchema);
