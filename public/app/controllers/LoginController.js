@@ -1,7 +1,4 @@
-app
-
-.controller('LoginController', function($scope, $location, $window, Login) {
-
+app.controller('LoginController', function($rootScope,$scope, $location,$auth, $window, Login) {
 	var vm = this,
 		now = new Date(),
 		exp = new Date(now.getFullYear()+1, now.getMonth(), now.getDate()); /*expired next year*/
@@ -10,7 +7,7 @@ app
 
 	$scope.remember = {
 		me : true
-	}		
+	};
 
 	if(Login.getEmailCookie('email')){
 		vm.loginData = {

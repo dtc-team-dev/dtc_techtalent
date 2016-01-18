@@ -1,3 +1,8 @@
+/*
+ |--------------------------------------------------------------------------
+ | App Module Require
+ |--------------------------------------------------------------------------
+ */
 var express = require('express'),
     bodyParser = require('body-parser'),
     morgan = require('morgan'),
@@ -5,27 +10,36 @@ var express = require('express'),
     config = require('./config/main'),
     http = require('http'),
     path = require('path'),
-    //methodOverride = require('method-override'),
-    app = express();
+    app = express(),
+    api = require('./app/routes/users')(app, express),
+    routes = require('./app/routes/index')(app, express);
 
-var api = require('./app/routes/users')(app, express);
-var routes = require('./app/routes/index')(app, express);
-
+/*
+ |--------------------------------------------------------------------------
+ | App Configuration
+ |--------------------------------------------------------------------------
+ */
 /*app.set('views', path.join(__dirname, '/public/views'));
 app.set('view engine', 'html');*/
 app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
-app.use(express.static(__dirname + '/public'));
-app.use(express.static(__dirname + '/public/assets/img'));
 app.use(express.static(path.join(__dirname,'public')));
-/*app.use(express.static(__dirname + '/public'));
-app.use(express.static(__dirname + '/public/assets/img'));*/
 
+/*
+ |--------------------------------------------------------------------------
+ | Routes Configuration
+ |--------------------------------------------------------------------------
+ */
 app.use('/api', api);
 app.use('/', routes);
 
+/*
+ |--------------------------------------------------------------------------
+ | Server Connection
+ |--------------------------------------------------------------------------
+ */
 /**
  * Get port from config.
  */
@@ -54,12 +68,9 @@ app.use(function (err, req, res, next) {
 server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
-
-
 /**
  * Normalize a port into a number, string, or false.
  */
-
 function normalizePort(val) {
     var port = parseInt(val, 10);
 
@@ -75,11 +86,9 @@ function normalizePort(val) {
 
     return false;
 }
-
 /**
  * Event listener for HTTP server "error" event.
  */
-
 function onError(error) {
     if (error.syscall !== 'listen') {
         throw error;
@@ -88,7 +97,6 @@ function onError(error) {
     var bind = typeof port === 'string'
         ? 'Pipe ' + port
         : 'Port ' + port;
-
     // handle specific listen errors with friendly messages
     switch (error.code) {
         case 'EACCES':
@@ -103,7 +111,6 @@ function onError(error) {
             throw error;
     }
 }
-
 /**
  * Event listener for HTTP server "listening" event.
  */
@@ -114,8 +121,9 @@ function onListening() {
         : 'port ' + addr.port;
     console.log('Terhubung dengan port ' + bind);
 }
-
-/*Connected to Database*/
+/**
+ * Connect to Database
+ */
 mongoose.connect(config.database, function (err) {
     if (err) {
         console.log(err);
