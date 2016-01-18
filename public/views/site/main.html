@@ -13,8 +13,8 @@
 
 		<div class="m-t-430" ng-controller="LoginController as login">
 			
-			<div class="col-md-6" ng-if="!login.loggedIn">
-				<a class="signup pull-right" data-toggle="modal" data-target="#modalRegister">Sign Up</a>
+			<div class="col-md-12" ng-if="!login.loggedIn">
+				<a href="" class="signup" data-toggle="modal" data-target="#modalRegister">Sign Up</a>
 			</div>
 
 			<!-- Modal -->
@@ -25,9 +25,24 @@
 							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 							<h4 class="modal-title" id="modalRegisterLabel"><strong>Sign Up for Free</strong></h4>
 							<span class="font-gray">Choose on of the following up sign up methods</span>
-							<div class="linkedin-login">
-								<a href=""><img src="assets/img/Sign-In-Large---Active.png" alt="Sign In with Linkedin"></a>
+							<div class="login-container">
+								<a href="">
+									<div class="login-linkedin">
+										Sign in with Linkedin
+									</div>
+								</a>
 							</div>
+
+							<div class="login-container">
+								<a href="">
+									<div class="login-google">
+										Sign in with Google
+									</div>
+								</a>
+							</div>
+							<!-- <div class="linkedin-login">
+								<a href=""><img src="assets/img/Sign-In-Large---Active.png" alt="Sign In with Linkedin"></a>
+							</div> -->
 							<br>
 							<hr>
 						</div>
@@ -48,18 +63,19 @@
 										<p class="text-left font-gray">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae blanditiis est consequuntur omnis optio.</p>
 										<button type="button" class="btn btn-login" ng-click="user.CreateUser()">Create Account</button>
 									</form> 
-							</div> 
-								</div>
+								</div> 
+							</div>
 						</div>						
 					</div>
 				</div>
 			</div>
+			<!-- end of modal -->
 
-			<div class="col-md-6" ng-if="!login.loggedIn">
+			<!-- <div class="col-md-6" ng-if="!login.loggedIn">
 				<div class="linkedin-login pull-left">
 					<a href=""><img src="assets/img/Sign-In-Large---Active.png" alt="Sign In with Linkedin"></a>
 				</div>
-			</div>
+			</div> -->
 
 			<div class="col-md-12 text-center">
 				&copy; copyright 2015 <a href="http://www.techtalent.asia/">techtalent.asia</a>
@@ -70,3 +86,6 @@
 	</div>
 
 </div>
+
+
+<people></people>

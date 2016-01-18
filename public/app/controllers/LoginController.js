@@ -62,14 +62,17 @@ app
 				});
 		}
 		
-	}
+	};
 
 	/*Function Klik untuk Logout*/
 	vm.doLogout = function() {
 		Login.logout();
 		$window.location.reload();
-	}
+	};
 
+	vm.authenticate = function(provider) {
+		$auth.authenticate(provider);
+	};
 
 
 });
