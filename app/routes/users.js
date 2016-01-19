@@ -3,7 +3,7 @@ var User = require('../models/users'),
     jwt = require('jwt-simple'),
     moment = require('moment'),
     nodemailer = require('nodemailer'),
-    path = require('path'),   
+    path = require('path'),
     config = require('../../config/main');
 
 module.exports = function(app, express){
@@ -12,7 +12,7 @@ module.exports = function(app, express){
 
 
     /*create user account by Andri*/
-    api.post('/sendReq', function(req,res){
+/*    api.post('/sendReq', function(req,res){
         var user = new User({
             displayName : req.body.displayname,
             email       : req.body.email,
@@ -30,7 +30,7 @@ module.exports = function(app, express){
 
             res.json({ message : "Email Telah Terkirim" });
         });
-    });
+    });*/
 
     /*user update by Andri*/
     api.post('/update/:id', function(req,res){
