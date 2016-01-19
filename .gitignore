@@ -97,6 +97,7 @@ atlassian-ide-plugin.xml
 
 # Crashlytics plugin (for Android Studio and IntelliJ)
 com_crashlytics_export_strings.xml
+<<<<<<< HEAD
 crashlytics.properties
 crashlytics-build.properties
 
@@ -104,3 +105,6 @@ public/assets/css/app.css
 public/assets/js/vendor.js
 public/assets/css/app.css
 public/assets/js/vendor.js
+=======
+crashlytics.properties
+>>>>>>> origin/master

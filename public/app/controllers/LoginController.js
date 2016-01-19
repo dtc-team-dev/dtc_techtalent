@@ -1,78 +1,77 @@
-app
+app.controller('LoginController', function ($rootScope, $scope, $location, $auth, $window, Login) {
+    var vm = this,
+        now = new Date(),
+        exp = new Date(now.getFullYear() + 1, now.getMonth(), now.getDate());
+    /*expired next year*/
 
-.controller('LoginController', function($scope, $location, $window, Login) {
+    vm.loggedIn = Login.isLoggedIn();
 
-	var vm = this,
-		now = new Date(),
-		exp = new Date(now.getFullYear()+1, now.getMonth(), now.getDate()); /*expired next year*/
+    $scope.remember = {
+        me: true
+    };
 
-	vm.loggedIn = Login.isLoggedIn();
+    $scope.isAuthenticated = function() {
+        return $auth.isAuthenticated();
+    };
 
-	$scope.remember = {
-		me : true
-	}		
+    $scope.authenticate = function (provider) {
+        $auth.authenticate(provider);
+    };
 
-	if(Login.getEmailCookie('email')){
-		vm.loginData = {
-			'email' : atob(Login.getEmailCookie('email')),
-			'password' : atob(Login.getEmailCookie('password'))
-		};
-	}
+    if (Login.getEmailCookie('email')) {
+        vm.loginData = {
+            'email': atob(Login.getEmailCookie('email')),
+            'password': atob(Login.getEmailCookie('password'))
+        };
+    }
 
-	/*get User after login*/
-	Login.getUser()
-		.then(function(data) {
-			vm.user = data.data;
-		});
+    /*get User after login*/
+    Login.getUser()
+        .then(function (data) {
+            vm.user = data.data;
+        });
 
-	/*Function Klik untuk Login*/
-	vm.doLogin = function() {
+    /*Function Klik untuk Login*/
+    vm.doLogin = function () {
+        vm.processing = true;
 
-		vm.processing = true;
+        vm.error = '';
+        if (vm.loginData === undefined) {
+            /*alert('Data Tidak Boleh Kosong');*/
+            console.log("Data Tidak Boleh Kosong");
+        } else {
 
-		vm.error = '';
-		if(vm.loginData === undefined){
-			alert('Data Tidak Boleh Kosong');
-		}else{
+            if ($scope.remember.me === false) {
+                Login.forget('email');
+                Login.forget('password');
+            } else {
+                Login.remember('email', btoa(vm.loginData.email));
+                Login.remember('password', btoa(vm.loginData.password));
+            }
 
-			if($scope.remember.me === false){
-				Login.forget('email');
-				Login.forget('password');				
-			}else{
-				Login.remember('email', btoa(vm.loginData.email));
-				Login.remember('password', btoa(vm.loginData.password));
-			}
+            Login.login(vm.loginData.email, vm.loginData.password)
+                .success(function (data) {
+                    vm.processing = false;
 
-			Login.login(vm.loginData.email, vm.loginData.password)
-				.success(function(data) {
-					vm.processing = false;
+                    Login.getUser()
+                        .then(function (data) {
+                            vm.user = data.data;
+                        });
 
-					Login.getUser()
-						.then(function(data) {
-							vm.user = data.data;
-						});
+                    if (data.success) {
+                        $location.path('/');
 
-					if(data.success){
-						$location.path('/');
+                    } else {
+                        vm.error = data.message;
+                        alert(vm.error);
+                    }
+                });
+        }
+    };
 
-					}else{
-						vm.error = data.message;
-						alert(vm.error);
-					}
-				});
-		}
-		
-	};
-
-	/*Function Klik untuk Logout*/
-	vm.doLogout = function() {
-		Login.logout();
-		$window.location.reload();
-	};
-
-	vm.authenticate = function(provider) {
-		$auth.authenticate(provider);
-	};
-
-
+    /*Function Klik untuk Logout*/
+    vm.doLogout = function () {
+        Login.logout();
+        $window.location.reload();
+    };
 });
