@@ -365,6 +365,7 @@
 	}
 }
 
+
 /*=====================================================
 =            Hexagon for User Photo Profil            =
 =====================================================*/
@@ -390,8 +391,7 @@
 	}
 }
 
-.hexTop,
-.hexBottom {
+.hexTop, .hexBottom {
 	position: absolute;
 	z-index: 1;
 	width: 56.57px;
@@ -407,8 +407,7 @@
 }
 
 /*counter transform the bg image on the caps*/
-.hexTop:after,
-.hexBottom:after {
+.hexTop:after, .hexBottom:after {
 	content: "";
 	position: absolute;
 	border-radius: 10px!important;
