@@ -2,57 +2,41 @@ var User = require('../models/users'),
     helper = require('../../lib/helper'),
     jwt = require('jwt-simple'),
     moment = require('moment'),
-    config = require('../../config/config');
+    config = require('../../config/config'),
+    nodemailer = require('nodemailer'),
+    path = require('path'),   
+    emailTemplate = require('email-templates');
 
 module.exports = function(app, express){
 
     var api = express.Router();
 
-    /*var auth = function (req, res, next) {
-        function unauthorized(res) {
-            res.set('WWW-Authenticate', 'Basic realm=Authorization Required');
-            return res.send(401);
-        }
-
-        var user = basicAuth(req);
-
-        if (!user || !user.name || !user.pass) {
-            return unauthorized(res);
-        }
-
-        if (user.name === 'hansenmakangiras' && user.pass === 'BlackID85') {
-            return next();
-        } else {
-            return unauthorized(res);
-        }
-    };*/
+	api.get('/email', function(req,res){
+        // create reusable transporter object using the default SMTP transport
+        var transporter = nodemailer.createTransport('smtps://beta.eproc%40gmail.com:d0c0t3lmks@smtp.gmail.com');
 
 
-    function ensureAuthenticated(req,res,next){
-        if (!req.headers.authorization) {
-            return res.status(401).send({ message: 'Please make sure your request has an Authorization header' });
-            //res.writeHead(401),{'WWW-Authenticate' : 'Basic Realm="Tech Talent App"','content-type':'text/plain'};
-            //res.send({ message: 'Please make sure your request has an Authorization header' });
-            //res.end();
-            //return;
-        }
-        var token = req.headers.authorization.split(' ')[1];
+		//document.getElementById("tes").innerHTML = "Andri";
+        // setup e-mail data with unicode symbols
+        var mailOptions = {
+            from: 'Tech Talent', // sender address
+            to: 'andridwiutomo.aek@gmail.com', // list of receivers
+            subject: 'Hello', // Subject line
+            text: 'Hello world', // plaintext body
+            html: {path : './public/views/emailTemplate/token.html'} //'<b>Hello world</b>' // html body
+        };
 
-        var payload = null;
-        try {
-            payload = jwt.decode(token, config.secretKey);
-        }
-        catch (err) {
-            return res.status(401).send({ message: err.message });
-        }
+        // send mail with defined transport object
+        transporter.sendMail(mailOptions, function(error, info){
+            if(error){
+                return console.log(error);
+            }else{
+                res.send('Message sent: ' + info.response);          
+            }
+        });
+    });
 
-        if (payload.exp <= moment().unix()) {
-            return res.send({ message: 'Token has expired' });
-        }
-        req.user = payload.sub;
-        next();
-    }
-
+    
     /*create user account by Andri*/
     api.post('/sendReq', function(req,res){
         var user = new User({
