@@ -10309,7 +10309,8 @@ blockquote p {
 .navbar {
   border: none;
   border-radius: 0;
-  margin: 0; }
+  margin: 0;
+  z-index: 99; }
   .navbar-brand {
     font-weight: bold;
     color: #FF8500 !important; }
@@ -10392,7 +10393,8 @@ blockquote p {
     margin-bottom: 10px; }
 
 .copyright-techtalent {
-  padding-top: 35px; }
+  padding-top: 35px;
+  z-index: 99; }
 
 .login-form {
   position: relative;
