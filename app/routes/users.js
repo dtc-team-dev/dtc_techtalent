@@ -4,7 +4,6 @@ var User = require('../models/users'),
     moment = require('moment'),
     nodemailer = require('nodemailer'),
     path = require('path'),   
-    emailTemplate = require('email-templates'),
     config = require('../../config/main');
 
 module.exports = function(app, express){
