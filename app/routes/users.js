@@ -4,34 +4,67 @@ var User = require('../models/users'),
     moment = require('moment'),
     nodemailer = require('nodemailer'),
     path = require('path'),   
-    emailTemplate = require('email-templates'),
+    /*emailTemplate = require('email-templates'),*/
     config = require('../../config/main');
 
 module.exports = function(app, express){
 
     var api = express.Router();
 
+    /*
+     |--------------------------------------------------------------------------
+     | Generate JSON Web Token
+     |--------------------------------------------------------------------------
+     */
+    function createJWT (user) {
+        var payload = {
+            sub: user._id,
+            iat: moment().unix(),
+            exp: moment().add(14, 'days').unix()
+        };
+        return jwt.encode(payload, config.secretKey);
+    }
 
-    /*create user account by Andri*/
-    api.post('/sendReq', function(req,res){
-        var user = new User({
-            displayName : req.body.displayname,
-            email       : req.body.email,
-	        username    : req.body.username,
-	        password    : req.body.password,
-	        token       : helper.createJWT(user),
-	        activated   : false
-        });
+    /*var auth = function (req, res, next) {
+        function unauthorized(res) {
+            res.set('WWW-Authenticate', 'Basic realm=Authorization Required');
+            return res.send(401);
+        }
 
-        user.save(function(err){
-            if(err){
-                res.send(err);
-                return;
-            }
+        var user = basicAuth(req);
 
-            res.json({ message : "Email Telah Terkirim" });
-        });
-    });
+        if (!user || !user.name || !user.pass) {
+            return unauthorized(res);
+        }
+
+        if (user.name === 'hansenmakangiras' && user.pass === 'BlackID85') {
+            return next();
+        } else {
+            return unauthorized(res);
+        }
+    };*/
+
+
+    function ensureAuthenticated(req,res,next){
+        if (!req.headers.authorization) {
+            return res.status(401).send({ message: 'Please make sure your request has an Authorization header' });
+        }
+        var token = req.headers.authorization.split(' ')[1];
+
+        var payload = null;
+        try {
+            payload = jwt.decode(token, config.secretKey);
+        }
+        catch (err) {
+            return res.status(401).send({ message: err.message });
+        }
+
+        if (payload.exp <= moment().unix()) {
+            return res.send({ message: 'Token has expired' });
+        }
+        req.user = payload.sub;
+        next();
+    }
 
     /*user update by Andri*/
     api.post('/update/:id', function(req,res){
@@ -46,8 +79,19 @@ module.exports = function(app, express){
 		});
     });
 
+    /*getAll User by Andri*/
+    api.get('/users', function(req, res) {
+        User.find({}, function(err, users) {
+            if(err) {
+                res.send(err.message);
+                return;
+            }
+            res.json(users);
+        });
+    });
+
     /*user getuser by token create by Andri*/
-    api.get('/getuser/:token', function(req, res) {
+    api.get('/user/:token', function(req, res) {
         User.findOne({'token' : req.params.token}, function(err, user) {
             if(err) {
                 res.send(err);
@@ -89,7 +133,18 @@ module.exports = function(app, express){
                 if (err) {
                     res.json({ message: err.message });
                 }
-                res.json({ token: helper.createJWT(result), message:"Successfully Register." });
+                res.json({ token: createJWT(result), message:"Successfully Register."});
+            });
+        });
+    });
+
+    api.get('/user/confirm/:token',function(req,res){
+        User.findOne({ token: req.params.token }, function(err, user) {
+            user.update({activated : 0},{activated : 1},function(err, result) {
+                if (err) {
+                    res.json({ message: err.message });
+                }
+                res.json({ message:"Email has been confirmed successfuly."});
             });
         });
     });
@@ -102,47 +157,50 @@ module.exports = function(app, express){
      |--------------------------------------------------------------------------
      */
     api.post('/auth/login', function(req, res) {
-        User.findOne({ 
+        User.findOne({
             'email' : req.body.email
-        }).select('username password activated token').exec(function(err, user) {
+        }).select('username password activated token linkedin google').exec(function(err, user) {
             if(err) throw err;
             if(!user) {
                 res.send({ message: "User doesnt exist"});
-            } else if(user){ 
+            } else if(user){
                 var validPassword = user.comparePassword(req.body.password);
                 if(!validPassword) {
                     res.send({ message: "Invalid Password"});
                 } else {
-                    if(user.activated === false){
-                        res.send({ message: "User Doesnt Active"});
-                    }else{
-                        res.json({
-                            success: true,
-                            token: user.token,
-                            message: "Successfuly login!"
-                        });
+                    if(user.linkedin !== "" || user.google !== ""){
+                        if(!user.activated){
+                            return res.send({ message: "Please, confirm your email!"});
+                        }else{
+                            return res.json({
+                                success: true,
+                                token: user.token,
+                                message: "Successfuly login!"
+                            });
+                        }
                     }
                 }
             }
         });
+        /*User.findOne({ email: req.body.email }, '+password', function(err, user) {
+            if (!user) {
+                return res.status(401).send({ message: 'Invalid email and/or password' });
+            }
+            user.comparePassword(req.body.password, function(err, isMatch) {
+                if (!isMatch) {
+                    return res.status(401).send({ message: 'Invalid email and/or password' });
+                }
+                res.json({ token: createJWT(user) });
+            });
+        });*/
     });
 
-    /*getAll User by Andri*/
-    api.get('/users', function(req, res) {
-        User.find({}, function(err, users) {
-            if(err) {
-                res.send(err);
-                return;
-            }
-            res.json(users);
-        });
-    });
     /*
      |--------------------------------------------------------------------------
      | GET /api/me
      |--------------------------------------------------------------------------
      */
-    api.get('/api/me', helper.ensureAuthenticated, function(req, res) {
+    api.get('/api/me', ensureAuthenticated, function(req, res) {
         User.findById(req.user, function(err, user) {
             if(err){
                 return res.send(400,{message:"User not found"});
@@ -215,8 +273,9 @@ module.exports = function(app, express){
                             user.linkedin = profile.id;
                             user.picture = user.picture || profile.pictureUrl;
                             user.displayname = user.displayname || profile.firstName + ' ' + profile.lastName;
+                            user.activated = 1;
                             user.save(function() {
-                                var token = helper.createJWT(user);
+                                var token = createJWT(user);
                                 res.send({ token: token });
                             });
                         });
@@ -231,8 +290,9 @@ module.exports = function(app, express){
                         user.linkedin = profile.id;
                         user.picture = profile.pictureUrl;
                         user.displayname = profile.firstName + ' ' + profile.lastName;
+                        user.activated = 1;
                         user.save(function() {
-                            var token = helper.createJWT(user);
+                            var token = createJWT(user);
                             res.send({ token: token });
                         });
                     });
@@ -282,8 +342,9 @@ module.exports = function(app, express){
                             user.google = profile.sub;
                             user.picture = user.picture || profile.picture.replace('sz=50', 'sz=200');
                             user.displayName = user.displayName || profile.name;
+                            user.activated = 1;
                             user.save(function() {
-                                var token = helper.createJWT(user);
+                                var token = createJWT(user);
                                 res.send({ token: token });
                             });
                         });
@@ -298,8 +359,9 @@ module.exports = function(app, express){
                         user.google = profile.sub;
                         user.picture = profile.picture.replace('sz=50', 'sz=200');
                         user.displayName = profile.name;
+                        user.activated = 1;
                         user.save(function(err) {
-                            var token = helper.createJWT(user);
+                            var token = createJWT(user);
                             res.send({ token: token });
                         });
                     });

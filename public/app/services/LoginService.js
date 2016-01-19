@@ -1,11 +1,12 @@
 /*factory untuk Login*/
+'use strict';
 app.factory('Login', function ($http, $q, CekToken) {
 
     var cekFactory = {};
 
     /*function login untuk menghubungkan ke userApi*/
     cekFactory.login = function (email, password) {
-        return $http.post('api/auth/login', {
+        return $http.post('/auth/login', {
             email: email,
             password: password
         })
@@ -44,7 +45,7 @@ app.factory('Login', function ($http, $q, CekToken) {
 
     /*function signup untuk menghubungkan ke userApi*/
     cekFactory.signup = function (email, password) {
-        return $http.post('api/auth/signup', {
+        return $http.post('/auth/signup', {
             email: email,
             password: password
         })
@@ -61,16 +62,17 @@ app.factory('Login', function ($http, $q, CekToken) {
 
     /*function mengecek ketika user telah login*/
     cekFactory.isLoggedIn = function () {
-        if (CekToken.getToken())
+        if (CekToken.getToken()){
             return true;
-
-        return false;
+        }else{
+            return false;
+        }
     };
 
     /*function untuk mendapatkan akun ketika login*/
     cekFactory.getUser = function () {
-        if (CekToken.getToken()) {
-            return $http.get('/api/getuser/' + CekToken.getToken());
+        if (CekToken.isLoggedIn) {
+            return $http.get('/user/' + CekToken.getToken());
         } else {
             return $q.reject({message: "User has no token"});
         }
@@ -99,7 +101,6 @@ app.factory('Login', function ($http, $q, CekToken) {
 
         return cekTokenFactory;
     });
-
 
 
 

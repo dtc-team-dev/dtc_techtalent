@@ -3,13 +3,11 @@
 	<div class="row no-margin">
 		<div class="col-md-3 col-centered col-sm-8 text-center h100vh">
 			<div class="login-form">
-				
 				<a href="/" class="logo">Tech Talent Asia</a>
-
-				<form method="post" ng-submit="login.doLogin()" class="form-login form-custom">
-					<input type="email" class="input-custom" placeholder="Email" name="email" ng-model="login.loginData.email">
-					<input type="password" class="input-custom" placeholder="Password" name="password" ng-model="login.loginData.password">
-					<button type="submit" class="btn btn-block btn-login">Log In</button>
+				<form method="post" ng-submit="login.submit()" name="loginForm" class="form-login form-custom ng-invalid ng-invalid-required">
+					<input type="email" class="input-custom" placeholder="Email" name="email" ng-model="login.user.email" required autofocus>
+					<input type="password" class="input-custom" placeholder="Password" name="password" ng-model="login.user.password" required>
+					<button type="submit" ng-disabled="loginForm.$invalid" class="btn btn-block btn-login" disabled="disabled">Log In</button>
 					<br>
 					<div class="checkbox pull-left font-gray">
 					   <label><input type="checkbox" ng-model="remember.me"> Remember me</label>
@@ -18,13 +16,42 @@
 					<br><br>
 					<hr>
 					<span><strong><em>Didn't have account ?</em></strong></span>
-					<button type="submit" class="btn btn-block btn-signup">Sign Up</button>
-					<button ng-click="authenticate('google')" class="login-linkedin">Sign in with Google</button>
-					<button ng-click="authenticate('linkedin')" class="login-google">Sign in with LinkedIn</button>
 				</form>
+                    <a href="/" class="btn btn-block btn-signup">Sign Up</a>
+					<button ng-click="login.authenticate('google')" class="btn btn-block btn-signup">Sign in with Google</button>
+					<button ng-click="login.authenticate('linkedin')" class="btn btn-block btn-signup">Sign in with LinkedIn</button>
 
 			</div>
 
 		</div>
 	</div>
 </div>
+<!--
+<div class="login-container" ng-controller="LoginController">
+    <div class="row no-margin">
+        <div class="col-md-3 col-centered col-sm-8 text-center h100vh">
+            <div class="login-form">
+                <a href="/" class="logo">Tech Talent Asia</a>
+                <form method="post" ng-submit="login()" name="loginForm" class="form-login form-custom ng-invalid ng-invalid-required">
+                    <input type="email" class="input-custom" placeholder="Email" name="email" ng-model="user.email" required autofocus>
+                    <input type="password" class="input-custom" placeholder="Password" name="password" ng-model="user.password" required>
+                    <button type="submit" ng-disabled="loginForm.$invalid" class="btn btn-block btn-login" disabled="disabled">Log In</button>
+                    <br>
+                    <div class="checkbox pull-left font-gray">
+                        <label><input type="checkbox" ng-model="remember.me"> Remember me</label>
+                    </div>
+                    <p class="font-gray pull-right"><a href="#">Forgot your password ?</a></p>
+                    <br><br>
+                    <hr>
+                    <span><strong><em>Didn't have account ?</em></strong></span>
+                    <a href="#" class="btn btn-block btn-signup">Sign Up</a>
+
+                    <button ng-click="authenticate('google')" class="btn btn-block btn-signup">Sign in with Google</button>
+                    <button ng-click="authenticate('linkedin')" class="btn btn-block btn-signup">Sign in with LinkedIn</button>
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+</div>-->

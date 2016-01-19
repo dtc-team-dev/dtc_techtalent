@@ -23,6 +23,7 @@
 
 	<!-- Library css -->
 	<link rel="stylesheet" href="assets/css/app.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/angular-toastr.min.css" />
 
 	<script src="app/libs/angular.min.js"></script>
 
@@ -34,7 +35,6 @@
 	<div class="page-loader">
 		<img src="assets/img/load.gif" alt="Loading...">
 	</div>
-
 	<section ng-view></section>
 
 	
@@ -49,28 +49,28 @@
 	</script>
 
 	<!-- jQuery -->
-
+    <!-- Libs -->
+    <script src="app/libs/angular-sanitize.min.js"></script>
+    <script src="app/libs/angular-satellizer.min.js"></script>
+    <script src="app/libs/angular-route.min.js"></script>
+    <script src="app/libs/angular-animate.min.js"></script>
+    <script src="app/libs/angular-toastr.tpls.min.js"></script>
 	<!-- Modules -->
 	<script src="app/app.js"></script>
 
+    <!-- Directives -->
+    <script src="app/directives/peopleDirective.js"></script>
+    <script src="app/directives/passwordMatch.js"></script>
+    <script src="app/directives/passwordStrength.js"></script>
 	<!-- Controllers -->
 	<script src="app/controllers/SiteController.js"></script>
+	<script src="app/controllers/AuthController.js"></script>
 	<script src="app/controllers/LoginController.js"></script>
-	<script src="app/controllers/UserController.js"></script>	
-
-	<!-- Directives -->
-	<script src="app/directives/peopleDirective.js"></script>
-
+	<script src="app/controllers/UserController.js"></script>
 	<!-- Services -->
 	<script src="app/services/LoginService.js"></script>
 	<script src="app/services/UserService.js"></script>
-	<!-- Libs -->
-	<script src="app/libs/angular-sanitize.min.js"></script>
-	<script src="app/libs/angular-satellizer.min.js"></script>
-	<script src="app/libs/angular-route.min.js"></script>
-
-	<!-- Service -->
-	<!--<script src="app/services/authService.js"></script>-->
+	<script src="app/services/AccountService.js"></script>
 
 </body>
 </html>

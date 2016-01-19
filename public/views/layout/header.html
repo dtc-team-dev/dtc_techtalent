@@ -6,12 +6,15 @@
 			</div>
 
 			<!-- Collect the nav links, forms, and other content for toggling -->
-			<div class="" id="bs-example-navbar-collapse-1" ng-controller="LoginController as login">
+			<div class="" id="bs-example-navbar-collapse-1" ng-controller="UserController as login">
 
 				<ul class="nav navbar-nav navbar-right">
-					<li ng-if="!login.loggedIn"><a href="" class="navbar-signup" data-toggle="modal" data-target="#modalRegister">Sign Up</a></li>
+					<!--<li ng-if="!login.loggedIn"><a href="" class="navbar-signup" data-toggle="modal" data-target="#modalRegister">Sign Up</a></li>
 					<li ng-if="!login.loggedIn"><a href="/login">Log In</a></li>
-					<li ng-if="login.loggedIn"><a href="#" ng-click="login.doLogout()">{{ login.user.username }} , Log Out</a></li>
+					<li ng-if="login.loggedIn"><a href="#" ng-click="login.doLogout()">{{ login.user.username }} , Log Out</a></li>-->
+					<li ng-if="!login.isAuthenticated()"><a href="" class="navbar-signup" data-toggle="modal" data-target="#modalRegister">Sign Up</a></li>
+					<li ng-if="!login.isAuthenticated()"><a href="/#/login">Log In</a></li>
+					<li ng-if="login.isAuthenticated()"><a href="#" ng-click="login.logout()">{{ login.user.username }} , Log Out</a></li>
 				</ul>
 
 			</div><!-- /.navbar-collapse -->

@@ -1,10 +1,83 @@
+<!--
 <div class="bg">
 	
 	<div ng-include src="'views/layout/header.html'"></div>
 
 	<div class="container" class="wow fadeIn" data-wow-delay=".3s">
 
-		<div class="m-t-500" ng-controller="LoginController as login">
+		<div class="m-t-500" ng-controller="LoginController">
+
+			&lt;!&ndash; Modal &ndash;&gt;
+			<div class="modal fade" id="modalRegister" tabindex="-1" role="dialog" aria-labelledby="modalRegisterLabel">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							<h4 class="modal-title" id="modalRegisterLabel"><strong>Sign Up for Free</strong></h4>
+							<span class="font-gray">Choose on of the following up sign up methods</span>
+							<div class="login-container">
+								<a ng-click="authenticate('linkedin')" href="">
+									<div class="login-linkedin">
+										Sign in with Linkedin
+									</div>
+								</a>
+							</div>
+
+							<div class="login-container">
+								<a ng-click="authenticate('google')" href="">
+									<div class="login-google">
+										Sign in with Google
+									</div>
+								</a>
+							</div>
+							<br>
+							<hr>
+						</div>
+						<div class="modal-body">
+							<div class="row no-margin">
+								<div class="col-md-12 col-centered col-sm-12 no-padding">
+									<form method="post" name="signup" class="form-login form-custom" ng-controller="UserController as user">
+										<span class="font-gray">Or sign up using your email address</span>
+										<input type="text" class="form-control" placeholder="User name" ng-pattern="username" name="username" ng-model="user.username">
+								        <span class="error" ng-show="signup.username.$error.pattern">
+							            invalid username!
+        								</span>										
+										<input type="email" class="form-control" ng-pattern="email" placeholder="Email" name="email" ng-model="user.createData.email">
+								        <span class="error" ng-show="signup.email.$error.pattern">
+							            invalid email!
+        								</span>
+										<input type="password" class="form-control" placeholder="Password" name="password" ng-model="user.createData.password">
+										<p class="text-left font-gray">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae blanditiis est consequuntur omnis optio.</p>
+										<button type="button" class="btn btn-login" ng-click="user.CreateUser()">Create Account</button>
+									</form> 
+								</div> 
+							</div>
+						</div>						
+					</div>
+				</div>
+			</div>
+			&lt;!&ndash; end of modal &ndash;&gt;
+
+			<div class="col-md-12 text-center copyright-techtalent">
+				&copy; copyright 2015 <a href="http://www.techtalent.asia/">techtalent.asia</a>
+			</div>
+
+		</div>
+		
+	</div>
+
+</div>
+
+
+<people></people>-->
+
+<div class="bg ng-scope">
+
+	<div ng-include src="'views/layout/header.html'"></div>
+
+	<div class="container" class="wow fadeIn ng-scope" data-wow-delay=".3s">
+
+		<div class="m-t-500" ng-controller="UserController as login">
 
 			<!-- Modal -->
 			<div class="modal fade" id="modalRegister" tabindex="-1" role="dialog" aria-labelledby="modalRegisterLabel">
@@ -34,27 +107,27 @@
 						</div>
 						<div class="modal-body">
 							<div class="row no-margin">
-								<div class="col-md-12 col-centered col-sm-12 no-padding">
-									<form method="post" name="signup" class="form-login form-custom" ng-controller="UserController as user">
+								<div class="col-md-12 col-centered col-sm-12 no-padding" ng-controller="UserController as login">
+									<form method="post" ng-submit="login.signup()" name="signupForm" class="form-login form-custom ng-pristine ng-invalid ng-invalid-required ng-valid-email ng-valid-compare-to">
 										<span class="font-gray">Or sign up using your email address</span>
-										<input type="text" class="form-control" placeholder="User name" ng-pattern="username" name="username" ng-model="user.createData.username">
-								        <!-- <span class="error error-custom" ng-show="signup.username.$error.pattern">
-							            invalid username!
-        								</span> -->
-        								<div class="error error-custom" ng-show="signup.username.$error.pattern">
-							            invalid username!
-        								</div>										
-										<input type="email" class="form-control" ng-pattern="email" placeholder="Email" name="email" ng-model="user.createData.email">
-								        <div class="error error-custom" ng-show="signup.email.$error.pattern">
-							            invalid email!
-        								</div>
-										<input type="password" class="form-control" placeholder="Password" name="password" ng-model="user.createData.password">
+										<input type="text" class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required" placeholder="User name" ng-pattern="username" name="username" ng-model="login.user.username">
+								        <span class="error" ng-show="signupForm.username.$error.pattern">invalid username!</span>
+										<input type="text" class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required" placeholder="Display Name" name="displayname" ng-model="login.user.displayname">
+										<input id="email" type="email" class="form-control ng-pristine ng-untouched ng-valid-email ng-invalid ng-invalid-required" ng-pattern="email" placeholder="Email" name="email" ng-model="login.user.email">
+								        <span class="error" ng-show="signup.email.$error.pattern">invalid email!</span>
+										<input type="password" class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required" placeholder="Password" name="password" ng-model="login.user.password">
+                                        <span class="password-strength-indicator">
+										<input password-match="login.user.password" type="password" class="form-control ng-pristine ng-untouched ng-valid ng-isolate-scope ng-valid-compare-to" placeholder="Confirm Password" name="confirmPassword" ng-model="login.user.confirmPassword">
+                                            <span></span>
+                                            <span></span>
+                                            <span></span>
+                                        </span>
 										<p class="text-left font-gray">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae blanditiis est consequuntur omnis optio.</p>
-										<button type="button" class="btn btn-login" ng-click="user.CreateUser()">Create Account</button>
-									</form> 
-								</div> 
+										<button type="submit" ng-disabled="signupForm.$invalid" class="btn btn-login" disabled="disabled">Create Account</button>
+									</form>
+								</div>
 							</div>
-						</div>						
+						</div>
 					</div>
 				</div>
 			</div>
@@ -65,7 +138,7 @@
 			</div>
 
 		</div>
-		
+
 	</div>
 
 </div>

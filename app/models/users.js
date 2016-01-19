@@ -7,10 +7,10 @@ var mongoose    = require('mongoose'),
         username    : {type : String, required : true, lowercase:true},
         password    : {type : String, required : true, select : false},
         token       : {type : String, select : false},
-        displayname : {type : String},
-        picture     : {type : String},
-        linkedin    : {type : String},
-        google      : {type : String},
+        displayname : {type : String,default : null},
+        picture     : {type : String,default : null},
+        linkedin    : {type : String,default : null},
+        google      : {type : String,default : null},
         activated   : {type : Boolean, default:0}
     });
 
@@ -31,7 +31,7 @@ userSchema.pre('save', function(next){
 
 userSchema.methods.comparePassword = function(password,done){
     var user = this;
-/*    return bcrypt.compare(password,user.password, function(err,isMatch){
+    /*return bcrypt.compare(password,user.password, function(err,isMatch){
         done(err,isMatch);
     });*/
     return bcrypt.compareSync(password, user.password);

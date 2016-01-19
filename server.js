@@ -32,8 +32,8 @@ app.use(express.static(path.join(__dirname,'public')));
  | Routes Configuration
  |--------------------------------------------------------------------------
  */
-app.use('/api', api);
-app.use('/', routes);
+app.use('/', api);
+/*app.use('/', routes);*/
 
 /*
  |--------------------------------------------------------------------------
